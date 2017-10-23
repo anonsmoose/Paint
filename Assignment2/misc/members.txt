@@ -1,4 +1,4 @@
-# Please leave your contact information here
+# Please leave your contact information here.
 
 Member 1:
 Name: Clarice Jara
@@ -9,7 +9,7 @@ Name: Patrick O'Connor
 Email: patrick.oconnor@mail.utoronto.ca
 
 Member 3:
-Name:
+Name: Peter Tamraz
 Email:
 
 Member 4:
