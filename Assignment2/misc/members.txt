@@ -5,8 +5,8 @@ Name: Clarice Jara
 Email: clarice.jara@mail.utoronto.ca
 
 Member 2:
-Name:
-Email:
+Name: Patrick O'Connor
+Email: patrick.oconnor@mail.utoronto.ca
 
 Member 3:
 Name:
