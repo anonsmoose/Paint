@@ -24,5 +24,9 @@ public class Circle {
 	public void setRadius(int radius) {
 		this.radius = radius;
 	}
-
+	
+	public String toString()
+	{
+		return "Centre: " + this.centre + " " + "Radius: " + this.radius;
+	}
 }
