@@ -18,6 +18,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 	private View view; // So we can talk to our parent or other components of the view
 
 	private String mode; // modifies how we interpret input (could be better?)
+	private BrushStrategy brushStrategy;
 	private Circle circle; // the circle we are building
 	private Rectangle rectangle;
 	
@@ -31,7 +32,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 		
 		this.model = model;
 		this.model.addObserver(this);
-		
+		this.brushStrategy = new CircleBrushStrategy(this.model);
 		this.view=view;
 	}
 
@@ -113,116 +114,57 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 	 *  Controller aspect of this
 	 */
 	public void setMode(String mode){
-		this.mode=mode;
+		switch(mode){
+		case "Circle":
+			this.brushStrategy = new CircleBrushStrategy(this.model);
+			break;
+			
+		case "Squiggle":
+			this.brushStrategy = new SquiggleBrushStrategy(this.model);
+			break;
+			
+		case "Rectangle":
+			this.brushStrategy = new RectangleBrushStrategy(this.model);
+			break;
+		}
+		this.mode=mode; // change later
 	}
 	
 	// MouseMotionListener below
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		if(this.mode=="Squiggle"){
-			
-		} else if(this.mode=="Circle"){
-			
-		}
+		brushStrategy.mouseMoved(e);
 	}
+	
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		if(this.mode=="Squiggle"){
-			this.model.addPoint(new Point(e.getX(), e.getY()));
-		} else if(this.mode=="Circle"){
-			if(this.circle != null)
-			{
-				int radius = this.circle.getCentre().getX() - e.getX();
-				this.circle.setRadius(radius);
-				this.model.addCircle(this.circle);
-
-			
-			}
-		}
-		else if(this.mode == "Rectangle")
-		{
-			if(this.rectangle != null)
-			{
-				int width = this.rectangle.getCentre().getX() - e.getX();
-				int height = this.rectangle.getCentre().getY() - e.getY();
-				this.rectangle.setheight(height);
-				this.rectangle.setWidth(width);
-				this.model.addRectangle(this.rectangle);
-			}
-		}
+		brushStrategy.mouseDragged(e);
 	}
 
 	// MouseListener below
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(this.mode=="Squiggle"){
-			
-		} else if(this.mode=="Circle"){
-			
-		}
+		brushStrategy.mouseClicked(e);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(this.mode=="Squiggle"){
-			
-		} else if(this.mode=="Circle"){
-			// Problematic notion of radius and centre!!
-			Point centre = new Point(e.getX(), e.getY());
-			int radius = 0;
-			this.circle=new Circle(centre, 0);
-		}
-		
-		else if(this.mode == "Rectangle")
-		{
-			Point centre = new Point(e.getX(), e.getY());
-			int width = 0;
-			int height = 0;
-			this.rectangle = new Rectangle(centre, width, height);
-			
-		}
+		brushStrategy.mousePressed(e);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(this.mode=="Squiggle"){
-			
-		} else if(this.mode=="Circle"){
-			if(this.circle!=null){
-				// Problematic notion of radius and centre!!
-/*				int radius = Math.abs(this.circle.getCentre().getX()-e.getX());
-				this.circle.setRadius(radius);
-				this.model.addCircle(this.circle);
-				this.circle=null;*/
-			}
-		}
-		else if(this.mode == "Rectangle")
-		{
-/*			int width = Math.abs(this.rectangle.getCentre().getX() - e.getX());
-			int height = Math.abs(this.rectangle.getCentre().getY() - e.getY());
-			this.rectangle.setheight(height);
-			this.rectangle.setWidth(width);
-			this.model.addRectangle(this.rectangle);
-			this.rectangle = null;*/
-		}
-		
+		brushStrategy.mouseReleased(e);
 	}
+	
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if(this.mode=="Squiggle"){
-			
-		} else if(this.mode=="Circle"){
-			
-		}
+		brushStrategy.mouseEntered(e);
 	}
-
+	
 	@Override
 	public void mouseExited(MouseEvent e) {
-		if(this.mode=="Squiggle"){
-			
-		} else if(this.mode=="Circle"){
-			
-		}
+		brushStrategy.mouseExited(e);
 	}
 }
