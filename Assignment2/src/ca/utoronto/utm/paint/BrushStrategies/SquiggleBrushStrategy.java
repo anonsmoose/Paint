@@ -1,5 +1,6 @@
 package ca.utoronto.utm.paint.BrushStrategies;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ca.utoronto.utm.paint.PaintModel;
@@ -9,8 +10,10 @@ import ca.utoronto.utm.paint.Shapes.Squiggle;
 public class SquiggleBrushStrategy implements BrushStrategy {
 	private PaintModel model;
 	private Squiggle squiggle;
+	private int size;
 	public SquiggleBrushStrategy(PaintModel model){
 		this.model = model;
+		this.size = 1;
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -20,7 +23,8 @@ public class SquiggleBrushStrategy implements BrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		squiggle = new Squiggle();
+		this.size = this.model.getBrushSize();
+		squiggle = new Squiggle(Color.black, this.size);
 		
 	}
 

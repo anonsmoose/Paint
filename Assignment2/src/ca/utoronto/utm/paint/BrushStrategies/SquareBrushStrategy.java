@@ -6,7 +6,7 @@ import ca.utoronto.utm.paint.PaintModel;
 
 public class SquareBrushStrategy implements BrushStrategy {
 	private PaintModel model;
-	
+	private int size = 1;
 	public SquareBrushStrategy(PaintModel model){
 		this.model = model;
 	}

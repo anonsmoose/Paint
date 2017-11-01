@@ -14,10 +14,13 @@ public class PalletePanel extends JPanel implements ChangeListener{
 	private JLabel thicknessLabel;
 	private GridBagConstraints c;
 	private int brushSize;
-	public PalletePanel(){
+	private PaintModel model;
+	
+	public PalletePanel(PaintModel model){
 		this.setLayout(new GridBagLayout());
 		this.c = new GridBagConstraints();
 		this.brushSize = 1;
+		this.model = model;
 		
 		thicknessSlider = new JSlider(1,10,1);
 		thicknessLabel = new JLabel("Brush Size 1");
@@ -50,6 +53,7 @@ public class PalletePanel extends JPanel implements ChangeListener{
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		this.brushSize = ((JSlider)e.getSource()).getValue();
+		this.model.setBrushSize(this.brushSize);
 		thicknessLabel.setText("Brush Size: " + this.brushSize);
 	}
 	

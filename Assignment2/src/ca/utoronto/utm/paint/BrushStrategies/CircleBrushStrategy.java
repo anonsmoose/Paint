@@ -1,5 +1,6 @@
 package ca.utoronto.utm.paint.BrushStrategies;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ca.utoronto.utm.paint.PaintModel;
@@ -9,6 +10,7 @@ import ca.utoronto.utm.paint.Shapes.Circle;
 public class CircleBrushStrategy implements BrushStrategy{
 	private Circle circle;
 	private PaintModel model;
+	private int brushSize;
 	
 	public CircleBrushStrategy(PaintModel model){
 		this.model = model;
@@ -21,9 +23,10 @@ public class CircleBrushStrategy implements BrushStrategy{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		this.brushSize = this.model.getBrushSize();
 		Point centre = new Point(e.getX(), e.getY());
 		int radius = 0;
-		this.circle=new Circle(centre, 0);
+		this.circle=new Circle(centre, 0,Color.BLACK,this.brushSize);
 	}
 
 	@Override

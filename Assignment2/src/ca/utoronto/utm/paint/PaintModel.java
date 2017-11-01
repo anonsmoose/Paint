@@ -10,7 +10,15 @@ import ca.utoronto.utm.paint.Shapes.Shape;
 public class PaintModel extends Observable {
 
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
+	private int brushSize =1;
 	
+	public void setBrushSize(int size){
+		this.brushSize = size;
+	}
+	
+	public int getBrushSize(){
+		return this.brushSize;
+	}
 	public void addShape(Shape s){
 		this.shapes.add(s);
 		this.setChanged();

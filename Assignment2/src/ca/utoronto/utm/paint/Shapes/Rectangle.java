@@ -1,5 +1,7 @@
 package ca.utoronto.utm.paint.Shapes;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -9,13 +11,17 @@ import ca.utoronto.utm.paint.Point;
 public class Rectangle implements Shape{
 	private int height;
 	private int width;
+	private int brushSize;
+	private Color color;
 	private Point origin;
 	
-	public Rectangle(Point o, int height, int width) 
+	public Rectangle(Point o, int height, int width,Color color,int brushSize) 
 	{
 		this.width = width;
 		this.origin = o;
 		this.height = height;
+		this.color = color;
+		this.brushSize = brushSize;
 	}
 	
 	public Point getOrigin()
@@ -51,6 +57,8 @@ public class Rectangle implements Shape{
 	@Override
 	public void drawShape(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
+		g2d.setColor(color);
+		g2d.setStroke(new BasicStroke(this.brushSize));
 		int x = getOrigin().getX();
 		int y= getOrigin().getY();
 		int height = getheight();

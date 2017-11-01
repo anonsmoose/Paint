@@ -1,5 +1,6 @@
 package ca.utoronto.utm.paint.BrushStrategies;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ca.utoronto.utm.paint.PaintModel;
@@ -9,7 +10,7 @@ import ca.utoronto.utm.paint.Shapes.Rectangle;
 public class RectangleBrushStrategy implements BrushStrategy{
 	private PaintModel model;
 	private Rectangle rectangle;
-	
+	private int size = 1;
 	public RectangleBrushStrategy(PaintModel model){
 		this.model = model;
 	}
@@ -22,10 +23,11 @@ public class RectangleBrushStrategy implements BrushStrategy{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		this.size = this.model.getBrushSize();
 		Point origin = new Point(e.getX(), e.getY());
 		int width = 0;
 		int height = 0;
-		this.rectangle = new Rectangle(origin, width, height);
+		this.rectangle = new Rectangle(origin, width, height, Color.black, this.size);
 		
 	}
 
