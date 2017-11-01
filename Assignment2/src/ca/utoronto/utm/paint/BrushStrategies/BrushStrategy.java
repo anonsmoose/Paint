@@ -1,4 +1,4 @@
-package ca.utoronto.utm.paint;
+package ca.utoronto.utm.paint.BrushStrategies;
 
 import java.awt.event.MouseEvent;
 

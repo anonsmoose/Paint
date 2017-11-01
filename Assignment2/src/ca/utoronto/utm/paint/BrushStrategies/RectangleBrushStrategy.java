@@ -1,6 +1,10 @@
-package ca.utoronto.utm.paint;
+package ca.utoronto.utm.paint.BrushStrategies;
 
 import java.awt.event.MouseEvent;
+
+import ca.utoronto.utm.paint.PaintModel;
+import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Rectangle;
 
 public class RectangleBrushStrategy implements BrushStrategy{
 	private PaintModel model;

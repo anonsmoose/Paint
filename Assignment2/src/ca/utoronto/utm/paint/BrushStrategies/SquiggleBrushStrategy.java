@@ -1,12 +1,15 @@
-package ca.utoronto.utm.paint;
+package ca.utoronto.utm.paint.BrushStrategies;
 
 import java.awt.event.MouseEvent;
 
-public class CircleBrushStrategy implements BrushStrategy{
-	private Circle circle;
+import ca.utoronto.utm.paint.PaintModel;
+import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Squiggle;
+
+public class SquiggleBrushStrategy implements BrushStrategy {
 	private PaintModel model;
-	
-	public CircleBrushStrategy(PaintModel model){
+	private Squiggle squiggle;
+	public SquiggleBrushStrategy(PaintModel model){
 		this.model = model;
 	}
 	@Override
@@ -17,20 +20,13 @@ public class CircleBrushStrategy implements BrushStrategy{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Point centre = new Point(e.getX(), e.getY());
-		int radius = 0;
-		this.circle=new Circle(centre, 0);
+		squiggle = new Squiggle();
+		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(this.circle!=null){
-			// Problematic notion of radius and centre!!
-/*			int radius = Math.abs(this.circle.getCentre().getX()-e.getX());
-			this.circle.setRadius(radius);
-			this.model.addCircle(this.circle);
-			this.circle=null;*/
-		}
+		this.model.addShape(squiggle);
 		
 	}
 
@@ -54,11 +50,10 @@ public class CircleBrushStrategy implements BrushStrategy{
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		if(this.circle != null){
-			int radius = this.circle.getCentre().getX() - e.getX();
-			this.circle.setRadius(radius);
-			this.model.addCircle(this.circle);
-		}
+		if(this.squiggle != null){
+			this.squiggle.addPoint(new Point(e.getX(), e.getY()));
+			this.model.addShape(this.squiggle);
+		}	
 	}
 
 }

@@ -142,24 +142,13 @@ ISSUE    : Currently ,you can't tell which mode "Circle", "Rectangle", ...
            is currently selected. Is JButton correct, is there a way
            to highlight the currently selected mode?
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG 3
-NAME     : Architecture behind choosing selection mode is poor
-OWNER    : 
-PRIORITY :
-ESTIMATE : 
-ISSUE    : Code is not modular and is difficult to expand. Need a better
-           architecture behind selecting a drawing mode, and handling
-           the drawing events. Consider some design patterns here.
-           Refactor ShapeChooserPanel and PaintPanel to get rid of the
-           'if' blocks in the PaintPanel mouse event code.
---------------------------------------------------------------------------
+
 --------------------------------------------------------------------------
 TYPE     : BUG 4
 NAME     : Architecture behind Model is poor
-OWNER    : 
-PRIORITY :
-ESTIMATE : 
+OWNER    : Patrick O'Connor
+PRIORITY : High
+ESTIMATE : 2 Hours
 ISSUE    : Having a list of different types of drawable things in the
            model is cumbersome. In fact, it is currently incorrect, with
            Squiggle's not drawing properly. Need to re-architect the Model
@@ -189,6 +178,19 @@ ISSUE    : The first click should specify the center of the circle, with
 --------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
+
+--------------------------------------------------------------------------
+TYPE     : BUG 3
+NAME     : Architecture behind choosing selection mode is poor
+OWNER    : Patrick O'Connor
+PRIORITY : High
+ESTIMATE : 2 Hours
+ISSUE    : Code is not modular and is difficult to expand. Need a better
+           architecture behind selecting a drawing mode, and handling
+           the drawing events. Consider some design patterns here.
+           Refactor ShapeChooserPanel and PaintPanel to get rid of the
+           'if' blocks in the PaintPanel mouse event code.
+--------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 

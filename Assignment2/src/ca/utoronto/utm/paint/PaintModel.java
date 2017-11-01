@@ -3,11 +3,25 @@ package ca.utoronto.utm.paint;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import ca.utoronto.utm.paint.Shapes.Circle;
+import ca.utoronto.utm.paint.Shapes.Rectangle;
+import ca.utoronto.utm.paint.Shapes.Shape;
+
 public class PaintModel extends Observable {
 	private ArrayList<Point> points=new ArrayList<Point>();
 	private ArrayList<Circle> circles=new ArrayList<Circle>();
 	private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
-
+	private ArrayList<Shape> shapes = new ArrayList<Shape>();
+	
+	public void addShape(Shape s){
+		this.shapes.add(s);
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public ArrayList<Shape> getShapes(){
+		return shapes;
+	}
 	
 	public void addPoint(Point p){
 		this.points.add(p);

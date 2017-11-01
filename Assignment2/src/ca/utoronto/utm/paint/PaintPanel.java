@@ -1,6 +1,15 @@
 package ca.utoronto.utm.paint;
 
-import javax.swing.*;  
+import javax.swing.*;
+
+import ca.utoronto.utm.paint.BrushStrategies.BrushStrategy;
+import ca.utoronto.utm.paint.BrushStrategies.CircleBrushStrategy;
+import ca.utoronto.utm.paint.BrushStrategies.RectangleBrushStrategy;
+import ca.utoronto.utm.paint.BrushStrategies.SquiggleBrushStrategy;
+import ca.utoronto.utm.paint.Shapes.*;
+import ca.utoronto.utm.paint.Shapes.Rectangle;
+import ca.utoronto.utm.paint.Shapes.Shape;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -99,6 +108,11 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 			else {
 				g2d.drawRect(Math.abs(x), Math.abs(y), -width, -height);
 			}
+		}
+		
+		//draw shapes
+		for(Shape shape: this.model.getShapes()){
+			shape.drawShape(g);
 		}
 		
 		g2d.dispose();
