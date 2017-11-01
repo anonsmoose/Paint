@@ -61,7 +61,7 @@ public class CircleBrushStrategy implements BrushStrategy{
 		if(this.circle != null){
 			int radius = this.circle.getCentre().getX() - e.getX();
 			this.circle.setRadius(radius);
-			this.model.addCircle(this.circle);
+			this.model.addShape(this.circle);
 		}
 	}
 

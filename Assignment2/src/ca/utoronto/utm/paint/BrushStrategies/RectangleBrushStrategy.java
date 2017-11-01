@@ -22,10 +22,10 @@ public class RectangleBrushStrategy implements BrushStrategy{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Point centre = new Point(e.getX(), e.getY());
+		Point origin = new Point(e.getX(), e.getY());
 		int width = 0;
 		int height = 0;
-		this.rectangle = new Rectangle(centre, width, height);
+		this.rectangle = new Rectangle(origin, width, height);
 		
 	}
 
@@ -61,11 +61,11 @@ public class RectangleBrushStrategy implements BrushStrategy{
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if(this.rectangle != null){
-			int width = this.rectangle.getCentre().getX() - e.getX();
-			int height = this.rectangle.getCentre().getY() - e.getY();
+			int width = this.rectangle.getOrigin().getX() - e.getX();
+			int height = this.rectangle.getOrigin().getY() - e.getY();
 			this.rectangle.setheight(height);
 			this.rectangle.setWidth(width);
-			this.model.addRectangle(this.rectangle);
+			this.model.addShape(this.rectangle);
 		}
 		
 	}

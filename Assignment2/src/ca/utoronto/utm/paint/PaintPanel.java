@@ -59,56 +59,6 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 		g2d.setColor(Color.white);
         g2d.drawString ("i="+i, 50, 75);
 		i=i+1;
-
-		// Draw Lines
-		ArrayList<Point> points = this.model.getPoints();
-		for(int i=0;i<points.size()-1; i++){
-			Point p1=points.get(i);
-			Point p2=points.get(i+1);
-			g2d.drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY());
-		}
-		
-		// Draw Circles
-		ArrayList<Circle> circles = this.model.getCircles();
-		for(Circle c: this.model.getCircles()){
-			int x = c.getCentre().getX();
-			int y = c.getCentre().getY();
-			int radius = c.getRadius();
-			if(radius > 0)
-			{
-				g2d.drawOval(x - radius, y - radius, radius, radius);
-			}
-			else {
-				g2d.drawOval(x, y, -radius, -radius);
-			}
-		}
-		
-		//Draw Rectangles
-		ArrayList<Rectangle> rectangles = this.model.getRectangles();
-		for(Rectangle r: this.model.getRectangles())
-		{
-			int x = r.getCentre().getX();
-			int y= r.getCentre().getY();
-			int height = r.getheight();
-			int width = r.getWidth();
-			System.out.println("x: " + r.getCentre().getX());
-			System.out.println("y: " + r.getCentre().getY());
-			if(height  > 0 && width > 0)
-			{
-				g2d.drawRect(x - width, y - height, width, height);
-			}
-			else if(height > 0 && width < 0)
-			{
-				g2d.drawRect(x, y - height, -width, height);
-			}
-			else if(height < 0 && width > 0)
-			{
-				g2d.drawRect(x - width, y, width, -height);
-			}
-			else {
-				g2d.drawRect(Math.abs(x), Math.abs(y), -width, -height);
-			}
-		}
 		
 		//draw shapes
 		for(Shape shape: this.model.getShapes()){

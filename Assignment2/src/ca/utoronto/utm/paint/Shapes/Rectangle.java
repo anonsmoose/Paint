@@ -9,23 +9,23 @@ import ca.utoronto.utm.paint.Point;
 public class Rectangle implements Shape{
 	private int height;
 	private int width;
-	private Point centre;
+	private Point origin;
 	
-	public Rectangle(Point c, int height, int width) 
+	public Rectangle(Point o, int height, int width) 
 	{
 		this.width = width;
-		this.centre = c;
+		this.origin = o;
 		this.height = height;
 	}
 	
-	public Point getCentre()
+	public Point getOrigin()
 	{
-		return this.centre;
+		return this.origin;
 	}
 	
-	public void setCentre(Point c)
+	public void setOrigin(Point c)
 	{
-		this.centre = c;
+		this.origin = c;
 	}
 	
 	public int getheight()
@@ -51,8 +51,8 @@ public class Rectangle implements Shape{
 	@Override
 	public void drawShape(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
-		int x = getCentre().getX();
-		int y= getCentre().getY();
+		int x = getOrigin().getX();
+		int y= getOrigin().getY();
 		int height = getheight();
 		int width = getWidth();
 		if(height  > 0 && width > 0)
