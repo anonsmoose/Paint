@@ -25,20 +25,15 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 	private int i=0;
 	private PaintModel model; // slight departure from MVC, because of the way painting works
 	private View view; // So we can talk to our parent or other components of the view
-
-	private String mode; // modifies how we interpret input (could be better?)
 	private BrushStrategy brushStrategy;
 	private Circle circle; // the circle we are building
 	private Rectangle rectangle;
 	
 	public PaintPanel(PaintModel model, View view){
-		this.setBackground(Color.blue);
-		this.setPreferredSize(new Dimension(300,300));
+		this.setBackground(Color.white);
+		this.setPreferredSize(new Dimension(600,600));
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
-		
-		this.mode="Circle"; // bad code here?
-		
 		this.model = model;
 		this.model.addObserver(this);
 		this.brushStrategy = new CircleBrushStrategy(this.model);
@@ -56,9 +51,11 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
         Graphics2D g2d = (Graphics2D) g; // lets use the advanced api
 		// setBackground (Color.blue); 
 		// Origin is at the top left of the window 50 over, 75 down
-		g2d.setColor(Color.white);
-        g2d.drawString ("i="+i, 50, 75);
-		i=i+1;
+		//int strokeSize = this.view.getPalletePanel().getBrushSize();
+        //g2d.setStroke(new BasicStroke(strokeSize));
+        g2d.setColor(Color.black);
+        //g2d.drawString ("i="+i, 50, 75);
+		//i=i+1;
 		
 		//draw shapes
 		for(Shape shape: this.model.getShapes()){
@@ -91,7 +88,6 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 			this.brushStrategy = new RectangleBrushStrategy(this.model);
 			break;
 		}
-		this.mode=mode; // change later
 	}
 	
 	// MouseMotionListener below
