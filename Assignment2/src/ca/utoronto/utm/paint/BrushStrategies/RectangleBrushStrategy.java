@@ -2,10 +2,12 @@ package ca.utoronto.utm.paint.BrushStrategies;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import ca.utoronto.utm.paint.PaintModel;
 import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Rectangle;
+import ca.utoronto.utm.paint.Shapes.Shape;
 
 public class RectangleBrushStrategy implements BrushStrategy{
 	private PaintModel model;
@@ -65,11 +67,15 @@ public class RectangleBrushStrategy implements BrushStrategy{
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if(this.rectangle != null){
+			ArrayList<Shape> shapes = this.model.getShapes();
 			int width = this.rectangle.getOrigin().getX() - e.getX();
 			int height = this.rectangle.getOrigin().getY() - e.getY();
 			this.rectangle.setheight(height);
 			this.rectangle.setWidth(width);
+			if(!(shapes.contains(this.rectangle))) 
+			{
 			this.model.addShape(this.rectangle);
+			}
 		}
 		
 	}

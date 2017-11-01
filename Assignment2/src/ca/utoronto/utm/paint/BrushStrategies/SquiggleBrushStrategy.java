@@ -2,9 +2,11 @@ package ca.utoronto.utm.paint.BrushStrategies;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import ca.utoronto.utm.paint.PaintModel;
 import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Shape;
 import ca.utoronto.utm.paint.Shapes.Squiggle;
 
 public class SquiggleBrushStrategy implements BrushStrategy {
@@ -56,8 +58,12 @@ public class SquiggleBrushStrategy implements BrushStrategy {
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if(this.squiggle != null){
+			ArrayList<Shape> shapes = this.model.getShapes();
 			this.squiggle.addPoint(new Point(e.getX(), e.getY()));
+			if(!(shapes.contains(this.squiggle)))
+			{
 			this.model.addShape(this.squiggle);
+			}
 		}	
 	}
 

@@ -2,10 +2,12 @@ package ca.utoronto.utm.paint.BrushStrategies;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import ca.utoronto.utm.paint.PaintModel;
 import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Circle;
+import ca.utoronto.utm.paint.Shapes.Shape;
 
 public class CircleBrushStrategy implements BrushStrategy{
 	private Circle circle;
@@ -64,9 +66,13 @@ public class CircleBrushStrategy implements BrushStrategy{
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if(this.circle != null){
+			ArrayList<Shape> shapes = this.model.getShapes();
 			int radius = this.circle.getCentre().getX() - e.getX();
 			this.circle.setRadius(radius);
+			if(!(shapes.contains(this.circle)))
+			{
 			this.model.addShape(this.circle);
+			}
 		}
 	}
 

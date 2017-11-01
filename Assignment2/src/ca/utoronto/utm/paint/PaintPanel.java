@@ -60,6 +60,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 		//draw shapes
 		for(Shape shape: this.model.getShapes()){
 				shape.drawShape(g);
+				System.out.println(this.model.getShapes());
 		}
 		
 		g2d.dispose();
@@ -99,6 +100,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		brushStrategy.mouseDragged(e);
+		this.updateUI();
 	}
 
 	// MouseListener below
