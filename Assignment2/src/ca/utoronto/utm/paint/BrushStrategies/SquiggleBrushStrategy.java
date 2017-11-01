@@ -10,10 +10,10 @@ import ca.utoronto.utm.paint.Shapes.Squiggle;
 public class SquiggleBrushStrategy implements BrushStrategy {
 	private PaintModel model;
 	private Squiggle squiggle;
-	private int size;
+	private int brushSize = 1;
+	private Color color = Color.black;
 	public SquiggleBrushStrategy(PaintModel model){
 		this.model = model;
-		this.size = 1;
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -23,8 +23,9 @@ public class SquiggleBrushStrategy implements BrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.size = this.model.getBrushSize();
-		squiggle = new Squiggle(Color.black, this.size);
+		this.brushSize = this.model.getBrushSize();
+		//this.color = this.model.getColor();
+		squiggle = new Squiggle(this.color, this.brushSize);
 		
 	}
 

@@ -10,7 +10,8 @@ import ca.utoronto.utm.paint.Shapes.Rectangle;
 public class RectangleBrushStrategy implements BrushStrategy{
 	private PaintModel model;
 	private Rectangle rectangle;
-	private int size = 1;
+	private int brushSize = 1;
+	private Color color = Color.black;
 	public RectangleBrushStrategy(PaintModel model){
 		this.model = model;
 	}
@@ -23,11 +24,12 @@ public class RectangleBrushStrategy implements BrushStrategy{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.size = this.model.getBrushSize();
+		this.brushSize = this.model.getBrushSize();
+		//this.color = this.model.getColor();
 		Point origin = new Point(e.getX(), e.getY());
 		int width = 0;
 		int height = 0;
-		this.rectangle = new Rectangle(origin, width, height, Color.black, this.size);
+		this.rectangle = new Rectangle(origin, width, height, this.color, this.brushSize);
 		
 	}
 

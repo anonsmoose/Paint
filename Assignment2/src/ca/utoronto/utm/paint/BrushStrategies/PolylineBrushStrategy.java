@@ -1,12 +1,14 @@
 package ca.utoronto.utm.paint.BrushStrategies;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ca.utoronto.utm.paint.PaintModel;
 
 public class PolylineBrushStrategy implements BrushStrategy {
 	private PaintModel model;
-	
+	private int brushSize = 1;
+	private Color color = Color.black;
 	public PolylineBrushStrategy(){
 		this.model = model;
 	}
@@ -18,8 +20,8 @@ public class PolylineBrushStrategy implements BrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		this.brushSize = this.model.getBrushSize();
+		//this.Color = this.model.getColor();
 	}
 
 	@Override

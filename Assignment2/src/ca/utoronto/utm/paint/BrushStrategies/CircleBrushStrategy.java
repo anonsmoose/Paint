@@ -11,6 +11,7 @@ public class CircleBrushStrategy implements BrushStrategy{
 	private Circle circle;
 	private PaintModel model;
 	private int brushSize;
+	private Color color = Color.black;
 	
 	public CircleBrushStrategy(PaintModel model){
 		this.model = model;
@@ -24,9 +25,10 @@ public class CircleBrushStrategy implements BrushStrategy{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		this.brushSize = this.model.getBrushSize();
+		//this.color = this.model.getColor();
 		Point centre = new Point(e.getX(), e.getY());
 		int radius = 0;
-		this.circle=new Circle(centre, 0,Color.BLACK,this.brushSize);
+		this.circle=new Circle(centre, 0,this.color,this.brushSize);
 	}
 
 	@Override

@@ -1,12 +1,15 @@
 package ca.utoronto.utm.paint.BrushStrategies;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ca.utoronto.utm.paint.PaintModel;
 
 public class SquareBrushStrategy implements BrushStrategy {
 	private PaintModel model;
-	private int size = 1;
+	private int brushSize = 1;
+	private Color color = Color.black;
+	
 	public SquareBrushStrategy(PaintModel model){
 		this.model = model;
 	}
@@ -18,7 +21,8 @@ public class SquareBrushStrategy implements BrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+		this.brushSize = this.model.getBrushSize();
+		//this.color = this.model.getColor();
 
 	}
 
