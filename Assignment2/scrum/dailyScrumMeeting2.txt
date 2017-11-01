@@ -38,12 +38,13 @@ Oct 29, 2017
 
 Oct 30, 2017
 	Yesterday :
-	Today     :
+	Today     : Sprint Planning meeting with group
 	Obstacles :
 
 Oct 31, 2017
-	Yesterday :
-	Today     :
+	Yesterday : Sprint Planning Meeting
+	Today     : Improve architecture of brush selection and shape storage for the purpose of fixing bugs 3-5. 
+					work on other bugs and user stories if the time permits.
 	Obstacles :
 
 Nov 1, 2017

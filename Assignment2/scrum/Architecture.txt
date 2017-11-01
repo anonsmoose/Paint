@@ -38,10 +38,10 @@ DESIGN PATTERNS USED
 	discuss it below. Only add design patterns if they simplify and improve
 	the code. I see at least two that would greatly improve code. 
 		
-	Strategy:
+	Strategy: Used to modularize and simplify brush selection.
 	Command: 
 	Singleton:
-	Composite:
+	Composite: Used to simplify the storage and rendering of shapes.
 	Factory:
 	Builder:
 	Observer/Observable:

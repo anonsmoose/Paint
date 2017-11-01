@@ -40,8 +40,8 @@ public class Circle implements Shape {
 	public void drawShape(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		if(this.radius > 0)
-			g2d.drawOval(this.centre.getX() - radius, this.centre.getY() - radius, radius, radius);
-		else g2d.drawOval(this.centre.getX(), this.centre.getY(), -radius, -radius);
+			g2d.drawOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
+		else g2d.drawOval(this.centre.getX() + radius, this.centre.getY() + radius, -radius*2, -radius*2);
 	}
 
 	@Override
