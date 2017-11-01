@@ -65,7 +65,7 @@ public class RectangleBrushStrategy implements BrushStrategy{
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent e) {
+	public void mouseDragged(MouseEvent e) { 
 		if(this.rectangle != null){
 			ArrayList<Shape> shapes = this.model.getShapes();
 			int width = this.rectangle.getOrigin().getX() - e.getX();

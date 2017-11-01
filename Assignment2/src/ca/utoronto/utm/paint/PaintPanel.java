@@ -47,7 +47,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 		// Use g to draw on the JPanel, lookup java.awt.Graphics in
 		// the javadoc to see more of what this can do for you!!
 		
-        super.paintComponent(g); //paint background
+        super.paintComponent(g); //paint background 
         Graphics2D g2d = (Graphics2D) g; // lets use the advanced api
 		// setBackground (Color.blue); 
 		// Origin is at the top left of the window 50 over, 75 down

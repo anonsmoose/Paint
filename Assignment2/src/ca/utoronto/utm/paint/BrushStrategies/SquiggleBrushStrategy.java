@@ -55,8 +55,8 @@ public class SquiggleBrushStrategy implements BrushStrategy {
 		
 	}
 
-	@Override
-	public void mouseDragged(MouseEvent e) {
+	@Override 
+	public void mouseDragged(MouseEvent e) { 
 		if(this.squiggle != null){
 			ArrayList<Shape> shapes = this.model.getShapes();
 			this.squiggle.addPoint(new Point(e.getX(), e.getY()));

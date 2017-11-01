@@ -7,7 +7,7 @@ public class Paint {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new Paint();
-			}
+			}  
 		});
 	}
 

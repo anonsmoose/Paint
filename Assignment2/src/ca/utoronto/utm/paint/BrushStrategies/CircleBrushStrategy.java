@@ -64,7 +64,7 @@ public class CircleBrushStrategy implements BrushStrategy{
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent e) {
+	public void mouseDragged(MouseEvent e) { 
 		if(this.circle != null){
 			ArrayList<Shape> shapes = this.model.getShapes();
 			int radius = this.circle.getCentre().getX() - e.getX();
