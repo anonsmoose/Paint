@@ -30,7 +30,7 @@ public class CircleBrushStrategy implements BrushStrategy{
 		//this.color = this.model.getColor();
 		Point centre = new Point(e.getX(), e.getY());
 		int radius = 0;
-		this.circle=new Circle(centre, 0,this.color,this.brushSize);
+		this.circle=new Circle(centre, 0,this.color,this.brushSize, model.getSolid());
 	}
 
 	@Override

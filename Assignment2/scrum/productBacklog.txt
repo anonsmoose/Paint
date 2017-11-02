@@ -73,16 +73,7 @@ ISSUE    : Currently ,you can't tell which mode "Circle", "Rectangle", ...
            is currently selected. Is JButton correct, is there a way
            to highlight the currently selected mode?
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG 7
-NAME     : The program slows down significantly as the number of shapes increases
-OWNER    : Patrick O'Connor
-PRIORITY : Medium
-ESTIMATE : 2 Hours
-ISSUE    : Shapes that have already been drawn are continually redrawn each
-			time a change is made, as a result when the total amount of shapes
-			is large, the program lags when additional changes are made.
---------------------------------------------------------------------------
+
 
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
@@ -202,6 +193,17 @@ I WANT   : To be able to select the current line thickness, to be applied
            	results in two thinly outlined circles and a thinly outlined 
            	rectangle as well as two thickly outlined rectangles and a thick squiggle
 SO THAT  : 
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+TYPE     : BUG 7
+NAME     : The program slows down significantly as the number of shapes increases
+OWNER    : Peter Tamraz (Stolen from patty)
+PRIORITY : Medium
+ESTIMATE : 2 Hours
+ISSUE    : Shapes that have already been drawn are continually redrawn each
+			time a change is made, as a result when the total amount of shapes
+			is large, the program lags when additional changes are made.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################

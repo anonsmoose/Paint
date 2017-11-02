@@ -13,8 +13,10 @@ public class Circle implements Shape {
 	private int radius;
 	private int brushSize;
 	private Color color;
+	private boolean solid;
 	
-	public Circle(Point centre, int radius,Color color,int brushSize){
+	public Circle(Point centre, int radius,Color color,int brushSize, boolean solid){
+		this.solid = solid;
 		this.centre = centre;
 		this.radius = radius;
 		this.brushSize = brushSize;
@@ -41,15 +43,37 @@ public class Circle implements Shape {
 	{
 		return "Centre: " + this.centre + " " + "Radius: " + this.radius;
 	}
+	
+	public boolean getSolid()
+	{
+		return this.solid;
+	}
+	
+	public void setSolid(boolean solid)
+	{
+		this.solid = solid;
+	}
 
 	@Override
-	public void drawShape(Graphics g) {
+	public void drawShape(Graphics g, boolean solid) {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(color);
 		g2d.setStroke(new BasicStroke(this.brushSize));
 		if(this.radius > 0)
+		{
 			g2d.drawOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
-		else g2d.drawOval(this.centre.getX() + radius, this.centre.getY() + radius, -radius*2, -radius*2);
+			if(this.solid)
+			{
+				g2d.fillOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
+			}
+		}
+		else {
+			g2d.drawOval(this.centre.getX() + radius, this.centre.getY() + radius, -radius*2, -radius*2);
+			if(this.solid)
+			{
+				g2d.fillOval(this.centre.getX() + radius, this.centre.getY() + radius, -radius*2, -radius*2);
+			}
+		}
 	}
 
 	@Override

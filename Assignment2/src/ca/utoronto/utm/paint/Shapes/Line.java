@@ -11,6 +11,7 @@ public class Line implements Shape {
 	private Color color;
 	private boolean drawn;
 	private int thickness;
+	private boolean solid;
 	
 	public Line(int x1,int y1,int x2,int y2){
 		this.p1x = x1;
@@ -30,8 +31,18 @@ public class Line implements Shape {
 		this.color = color;
 		this.thickness = thickness;
 	}
+	
+	public boolean getSolid()
+	{
+		return this.solid;
+	}
+	
+	public void setSolid(boolean solid)
+	{
+		this.solid = solid;
+	}
 	@Override
-	public void drawShape(Graphics g) {
+	public void drawShape(Graphics g, boolean solid) {
 		 Graphics2D g2d = (Graphics2D) g;
 		 g2d.setStroke(new BasicStroke(this.thickness));
 		 g2d.setColor(color);

@@ -11,6 +11,7 @@ public class PaintModel extends Observable {
 
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 	private int brushSize =1;
+	private boolean solid;
 	
 	public void setBrushSize(int size){
 		this.brushSize = size;
@@ -23,6 +24,16 @@ public class PaintModel extends Observable {
 		this.shapes.add(s);
 		this.setChanged();
 		this.notifyObservers();
+	}
+	
+	public void setSolid(boolean s)
+	{
+		this.solid = s;
+	}
+	
+	public boolean getSolid()
+	{
+		return this.solid;
 	}
 	
 	public ArrayList<Shape> getShapes(){

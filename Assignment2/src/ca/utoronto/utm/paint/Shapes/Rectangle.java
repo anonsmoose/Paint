@@ -12,11 +12,13 @@ public class Rectangle implements Shape{
 	private int height;
 	private int width;
 	private int brushSize;
+	private boolean solid;
 	private Color color;
 	private Point origin;
 	
-	public Rectangle(Point o, int height, int width,Color color,int brushSize) 
+	public Rectangle(Point o, int height, int width,Color color,int brushSize, boolean solid)
 	{
+		this.solid = solid;
 		this.width = width;
 		this.origin = o;
 		this.height = height;
@@ -53,9 +55,19 @@ public class Rectangle implements Shape{
 	{
 		this.width = width;
 	}
+	
+	public boolean getSolid()
+	{
+		return this.solid;
+	}
+	
+	public void setSolid(boolean solid)
+	{
+		this.solid = solid;
+	}
 
 	@Override
-	public void drawShape(Graphics g) {
+	public void drawShape(Graphics g, boolean s) {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(color);
 		g2d.setStroke(new BasicStroke(this.brushSize));
@@ -66,17 +78,33 @@ public class Rectangle implements Shape{
 		if(height  > 0 && width > 0)
 		{
 			g2d.drawRect(x - width, y - height, width, height);
+			if(this.solid)
+			{
+				g2d.fillRect(x - width, y - height, width, height);
+			}
 		}
 		else if(height > 0 && width < 0)
 		{
 			g2d.drawRect(x, y - height, -width, height);
+			if(this.solid)
+			{
+				g2d.fillRect(x, y - height, -width, height);
+			}
 		}
 		else if(height < 0 && width > 0)
 		{
 			g2d.drawRect(x - width, y, width, -height);
+			if(this.solid)
+			{
+				g2d.fillRect(x - width, y, width, -height);
+			}
 		}
 		else {
 			g2d.drawRect(Math.abs(x), Math.abs(y), -width, -height);
+			if(this.solid)
+			{
+				g2d.fillRect(Math.abs(x), Math.abs(y), -width, -height);
+			}
 		}
 		
 	}

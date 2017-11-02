@@ -31,7 +31,7 @@ public class RectangleBrushStrategy implements BrushStrategy{
 		Point origin = new Point(e.getX(), e.getY());
 		int width = 0;
 		int height = 0;
-		this.rectangle = new Rectangle(origin, width, height, this.color, this.brushSize);
+		this.rectangle = new Rectangle(origin, width, height, this.color, this.brushSize, model.getSolid());
 		
 	}
 
