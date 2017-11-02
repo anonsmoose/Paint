@@ -13,6 +13,7 @@ public class RectangleBrushStrategy implements BrushStrategy{
 	private PaintModel model;
 	private Rectangle rectangle;
 	private int brushSize = 1;
+	private boolean solid;
 	private Color color = Color.black;
 	public RectangleBrushStrategy(PaintModel model){
 		this.model = model;

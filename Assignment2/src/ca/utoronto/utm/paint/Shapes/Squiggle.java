@@ -11,7 +11,6 @@ public class Squiggle implements Shape {
 	private Color color;
 	private boolean drawn;
 	private int thickness;
-	private boolean solid;
 	
 	public Squiggle(){
 		compositePoints = new ArrayList<Point>();
@@ -33,16 +32,6 @@ public class Squiggle implements Shape {
 	public boolean isDrawn(){
 		return this.drawn;
 	}
-	
-	public boolean getSolid()
-	{
-		return this.solid;
-	}
-	
-	public void setSolid(boolean solid)
-	{
-		this.solid = solid;
-	}
 	@Override
 	public ArrayList<Shape> explodeShape() {
 		ArrayList<Shape> compositeShapes = new ArrayList<Shape>();
@@ -59,10 +48,10 @@ public class Squiggle implements Shape {
 		return compositeShapes;
 	}
 	@Override
-	public void drawShape(Graphics g, boolean Solid) {
+	public void drawShape(Graphics g) {
 		for(Shape shape: explodeShape()){
 			Line line = (Line) shape;
-			line.drawShape(g, solid);
+			line.drawShape(g);
 		}
 		drawn = true;
 		

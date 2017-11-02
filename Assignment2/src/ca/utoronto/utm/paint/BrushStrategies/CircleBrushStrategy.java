@@ -13,6 +13,7 @@ public class CircleBrushStrategy implements BrushStrategy{
 	private Circle circle;
 	private PaintModel model;
 	private int brushSize;
+	private boolean solid;
 	private Color color = Color.black;
 	
 	public CircleBrushStrategy(PaintModel model){

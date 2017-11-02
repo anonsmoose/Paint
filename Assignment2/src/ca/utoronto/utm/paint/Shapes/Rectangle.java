@@ -12,9 +12,9 @@ public class Rectangle implements Shape{
 	private int height;
 	private int width;
 	private int brushSize;
-	private boolean solid;
 	private Color color;
 	private Point origin;
+	private boolean solid;
 	
 	public Rectangle(Point o, int height, int width,Color color,int brushSize, boolean solid)
 	{
@@ -55,19 +55,9 @@ public class Rectangle implements Shape{
 	{
 		this.width = width;
 	}
-	
-	public boolean getSolid()
-	{
-		return this.solid;
-	}
-	
-	public void setSolid(boolean solid)
-	{
-		this.solid = solid;
-	}
 
 	@Override
-	public void drawShape(Graphics g, boolean s) {
+	public void drawShape(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(color);
 		g2d.setStroke(new BasicStroke(this.brushSize));

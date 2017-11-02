@@ -59,7 +59,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 		
 		//draw shapes
 		for(Shape shape: this.model.getShapes()){
-				shape.drawShape(g, shape.getSolid());
+				shape.drawShape(g);
 				System.out.println(this.model.getShapes());
 		}
 		
@@ -87,12 +87,6 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 			
 		case "Rectangle":
 			this.brushStrategy = new RectangleBrushStrategy(this.model);
-			break;
-		case "Solid":
-			model.setSolid(true);
-			break;
-		case "Outline":
-			model.setSolid(false);
 			break;
 		}
 	}

@@ -20,20 +20,18 @@ public class PaintModel extends Observable {
 	public int getBrushSize(){
 		return this.brushSize;
 	}
+	
+	public void setSolid(boolean solid){
+		this.solid = solid;
+	}
+	
+	public boolean getSolid(){
+		return this.solid;
+	}
 	public void addShape(Shape s){
 		this.shapes.add(s);
 		this.setChanged();
 		this.notifyObservers();
-	}
-	
-	public void setSolid(boolean s)
-	{
-		this.solid = s;
-	}
-	
-	public boolean getSolid()
-	{
-		return this.solid;
 	}
 	
 	public ArrayList<Shape> getShapes(){

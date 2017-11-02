@@ -2,14 +2,17 @@ package ca.utoronto.utm.paint;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class PalletePanel extends JPanel implements ChangeListener{
+public class PalletePanel extends JPanel implements ChangeListener, ActionListener{
 	private JSlider thicknessSlider;
 	private JLabel thicknessLabel;
 	private GridBagConstraints c;
@@ -37,7 +40,12 @@ public class PalletePanel extends JPanel implements ChangeListener{
 		
 		c.gridx = 2;
 		this.add(new JLabel("Color: "),c);
-		
+		JButton solidButton = new JButton("Solid");
+		JButton outLineButton = new JButton("Outline");
+		this.add(solidButton);
+		this.add(outLineButton);
+		solidButton.addActionListener(this);
+		outLineButton.addActionListener(this);
 		//Position and Configure Slider
 		c.weightx = 0.5;
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -59,5 +67,19 @@ public class PalletePanel extends JPanel implements ChangeListener{
 	
 	public int getBrushSize(){
 		return this.brushSize;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton jb = (JButton) e.getSource();
+		if(jb.getText() == "Solid")
+		{
+			model.setSolid(true);
+		}
+		else if(jb.getText() == "Outline")
+		{
+			model.setSolid(false);
+		}
+		System.out.println(jb.getText());
 	}
 }
