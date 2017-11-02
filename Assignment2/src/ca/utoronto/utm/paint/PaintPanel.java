@@ -30,7 +30,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 	private Rectangle rectangle;
 	
 	public PaintPanel(PaintModel model, View view){
-		this.setBackground(Color.white);
+		this.setBackground(new Color(43, 43, 43));
 		this.setPreferredSize(new Dimension(600,600));
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
@@ -60,7 +60,7 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 		//draw shapes
 		for(Shape shape: this.model.getShapes()){
 				shape.drawShape(g);
-				System.out.println(this.model.getShapes());
+				
 		}
 		
 		g2d.dispose();
