@@ -59,7 +59,12 @@ public class Rectangle implements Shape{
 	@Override
 	public void drawShape(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
-		g2d.setColor(Color.WHITE);
+		
+		g2d.setColor(this.color);
+		if(this.color == null)
+		{
+			g2d.setColor(Color.white);
+		}
 		g2d.setStroke(new BasicStroke(this.brushSize));
 		int x = getOrigin().getX();
 		int y= getOrigin().getY();

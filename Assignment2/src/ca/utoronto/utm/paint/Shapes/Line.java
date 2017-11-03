@@ -34,7 +34,10 @@ public class Line implements Shape {
 	public void drawShape(Graphics g) {
 		 Graphics2D g2d = (Graphics2D) g;
 		 g2d.setStroke(new BasicStroke(this.thickness));
-		 g2d.setColor(color.WHITE);
+		 g2d.setColor(this.color);
+		 if(this.color == null) {
+			 g2d.setColor(color.WHITE);
+		 }
 		 g2d.drawLine(p1x, p1y, p2x, p2y);
 
 	}

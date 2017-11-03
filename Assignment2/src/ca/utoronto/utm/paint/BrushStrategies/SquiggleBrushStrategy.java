@@ -26,7 +26,7 @@ public class SquiggleBrushStrategy implements BrushStrategy {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		this.brushSize = this.model.getBrushSize();
-		//this.color = this.model.getColor();
+		this.color = this.model.getColor();
 		squiggle = new Squiggle(this.color, this.brushSize);
 		
 	}

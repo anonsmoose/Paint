@@ -1,23 +1,23 @@
 package ca.utoronto.utm.paint;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
+import javax.swing.*;
 public class PalletePanel extends JPanel implements ChangeListener, ActionListener{
 	private JSlider thicknessSlider;
 	private JLabel thicknessLabel;
 	private GridBagConstraints c;
 	private int brushSize;
+	private Color brushColor;
 	private PaintModel model;
+	private JColorChooser colorChooser;
 	
 	public PalletePanel(PaintModel model){
 		this.setLayout(new GridBagLayout());
@@ -42,8 +42,11 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.add(new JLabel("Color: "),c);
 		JButton solidButton = new JButton("Solid");
 		JButton outLineButton = new JButton("Outline");
+		JButton colorButton = new JButton("Color Picker");
+		this.add(colorButton);
 		this.add(solidButton);
 		this.add(outLineButton);
+		colorButton.addActionListener(this);
 		solidButton.addActionListener(this);
 		outLineButton.addActionListener(this);
 		//Position and Configure Slider
@@ -56,6 +59,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		thicknessSlider.setPaintTicks(true);
 		thicknessSlider.addChangeListener(this);
 		this.add(thicknessSlider,c);
+		
 	}
 
 	@Override
@@ -68,10 +72,21 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	public int getBrushSize(){
 		return this.brushSize;
 	}
+	
+	public void setColor(Color c)
+	{
+		this.brushColor = c;
+	}
+	
+	public Color getColor()
+	{
+		return this.brushColor;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton jb = (JButton) e.getSource();
+
 		if(jb.getText() == "Solid")
 		{
 			model.setSolid(true);
@@ -81,5 +96,35 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 			model.setSolid(false);
 		}
 		System.out.println(jb.getText());
+		if(jb.getText() == "Color Picker")
+		{
+			this.colorChooser = new JColorChooser();
+		    final JLabel preview = new JLabel(""
+		    		+ "The proof is trivial and has been left as an "
+		    		+ "exercise for the reader.", JLabel.CENTER);
+		    preview.setFont(new Font("Arial", Font.BOLD, 40));
+		    preview.setSize(preview.getPreferredSize());
+		    preview.setBorder(BorderFactory.createEmptyBorder(0, 0, 1, 0));
+		    colorChooser.setPreviewPanel(preview);
+		    ActionListener okActionListener = new ActionListener() {
+			      public void actionPerformed(ActionEvent actionEvent) {
+			        System.out.println(colorChooser.getColor());
+			        setColor(colorChooser.getColor());
+			        model.setColor(getColor());
+			      }
+			    };
+
+			    ActionListener cancelActionListener = new ActionListener() {
+			      public void actionPerformed(ActionEvent actionEvent) {
+			        
+			      }
+			    };
+			    
+			    final JDialog dialog = JColorChooser.createDialog(null, "Choose a color", true,
+				        colorChooser, okActionListener, cancelActionListener);
+
+				    dialog.setVisible(true);
+
+		}
 	}
 }

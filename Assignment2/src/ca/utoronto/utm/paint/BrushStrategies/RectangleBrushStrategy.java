@@ -28,7 +28,7 @@ public class RectangleBrushStrategy implements BrushStrategy{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		this.brushSize = this.model.getBrushSize();
-		//this.color = this.model.getColor();
+		this.color = this.model.getColor();
 		Point origin = new Point(e.getX(), e.getY());
 		int width = 0;
 		int height = 0;

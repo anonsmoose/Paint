@@ -53,6 +53,8 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 		// Origin is at the top left of the window 50 over, 75 down
 		//int strokeSize = this.view.getPalletePanel().getBrushSize();
         //g2d.setStroke(new BasicStroke(strokeSize));
+        /*g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+        		RenderingHints.VALUE_ANTIALIAS_ON);*/
         g2d.setColor(Color.black);
         //g2d.drawString ("i="+i, 50, 75);
 		//i=i+1;
