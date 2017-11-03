@@ -10,7 +10,8 @@ import java.awt.event.ActionListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.*;
-public class PalletePanel extends JPanel implements ChangeListener, ActionListener{
+
+public class PalletePanel extends JPanel implements ChangeListener, ActionListener {
 	private JSlider thicknessSlider;
 	private JLabel thicknessLabel;
 	private GridBagConstraints c;
@@ -18,28 +19,28 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private Color brushColor;
 	private PaintModel model;
 	private JColorChooser colorChooser;
-	
-	public PalletePanel(PaintModel model){
+
+	public PalletePanel(PaintModel model) {
 		this.setLayout(new GridBagLayout());
 		this.c = new GridBagConstraints();
 		this.brushSize = 1;
 		this.model = model;
-		
-		thicknessSlider = new JSlider(1,10,1);
+
+		thicknessSlider = new JSlider(1, 10, 1);
 		thicknessLabel = new JLabel("Brush Size 1");
-		
-		//Labels
+
+		// Labels
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.weightx = 2;
 		c.gridy = 0;
-		this.add(thicknessLabel,c);
-		
+		this.add(thicknessLabel, c);
+
 		c.gridx = 1;
-		this.add(new JLabel("Fill Type: "),c);
-		
+		this.add(new JLabel("Fill Type: "), c);
+
 		c.gridx = 2;
-		this.add(new JLabel("Color: "),c);
+		this.add(new JLabel("Color: "), c);
 		JButton solidButton = new JButton("Solid");
 		JButton outLineButton = new JButton("Outline");
 		JButton colorButton = new JButton("Color Picker");
@@ -49,7 +50,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		colorButton.addActionListener(this);
 		solidButton.addActionListener(this);
 		outLineButton.addActionListener(this);
-		//Position and Configure Slider
+		// Position and Configure Slider
 		c.weightx = 0.5;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
@@ -58,28 +59,26 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		thicknessSlider.setMajorTickSpacing(10);
 		thicknessSlider.setPaintTicks(true);
 		thicknessSlider.addChangeListener(this);
-		this.add(thicknessSlider,c);
-		
+		this.add(thicknessSlider, c);
+
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		this.brushSize = ((JSlider)e.getSource()).getValue();
+		this.brushSize = ((JSlider) e.getSource()).getValue();
 		this.model.setBrushSize(this.brushSize);
 		thicknessLabel.setText("Brush Size: " + this.brushSize);
 	}
-	
-	public int getBrushSize(){
+
+	public int getBrushSize() {
 		return this.brushSize;
 	}
-	
-	public void setColor(Color c)
-	{
+
+	public void setColor(Color c) {
 		this.brushColor = c;
 	}
-	
-	public Color getColor()
-	{
+
+	public Color getColor() {
 		return this.brushColor;
 	}
 
@@ -87,43 +86,38 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	public void actionPerformed(ActionEvent e) {
 		JButton jb = (JButton) e.getSource();
 
-		if(jb.getText() == "Solid")
-		{
+		if (jb.getText() == "Solid") {
 			model.setSolid(true);
-		}
-		else if(jb.getText() == "Outline")
-		{
+		} else if (jb.getText() == "Outline") {
 			model.setSolid(false);
 		}
 		System.out.println(jb.getText());
-		if(jb.getText() == "Color Picker")
-		{
+		if (jb.getText() == "Color Picker") {
 			this.colorChooser = new JColorChooser();
-		    final JLabel preview = new JLabel(""
-		    		+ "The proof is trivial and has been left as an "
-		    		+ "exercise for the reader.", JLabel.CENTER);
-		    preview.setFont(new Font("Arial", Font.BOLD, 40));
-		    preview.setSize(preview.getPreferredSize());
-		    preview.setBorder(BorderFactory.createEmptyBorder(0, 0, 1, 0));
-		    colorChooser.setPreviewPanel(preview);
-		    ActionListener okActionListener = new ActionListener() {
-			      public void actionPerformed(ActionEvent actionEvent) {
-			        System.out.println(colorChooser.getColor());
-			        setColor(colorChooser.getColor());
-			        model.setColor(getColor());
-			      }
-			    };
+			final JLabel preview = new JLabel(
+					"" + "The proof is trivial and has been left as an " + "exercise for the reader.", JLabel.CENTER);
+			preview.setFont(new Font("Arial", Font.BOLD, 40));
+			preview.setSize(preview.getPreferredSize());
+			preview.setBorder(BorderFactory.createEmptyBorder(0, 0, 1, 0));
+			colorChooser.setPreviewPanel(preview);
+			ActionListener okActionListener = new ActionListener() {
+				public void actionPerformed(ActionEvent actionEvent) {
+					System.out.println(colorChooser.getColor());
+					setColor(colorChooser.getColor());
+					model.setColor(getColor());
+				}
+			};
 
-			    ActionListener cancelActionListener = new ActionListener() {
-			      public void actionPerformed(ActionEvent actionEvent) {
-			        
-			      }
-			    };
-			    
-			    final JDialog dialog = JColorChooser.createDialog(null, "Choose a color", true,
-				        colorChooser, okActionListener, cancelActionListener);
+			ActionListener cancelActionListener = new ActionListener() {
+				public void actionPerformed(ActionEvent actionEvent) {
 
-				    dialog.setVisible(true);
+				}
+			};
+
+			final JDialog dialog = JColorChooser.createDialog(null, "Choose a color", true, colorChooser,
+					okActionListener, cancelActionListener);
+
+			dialog.setVisible(true);
 
 		}
 	}
