@@ -14,10 +14,15 @@ class ShapeChooserPanel extends JPanel implements ActionListener {
 	public ShapeChooserPanel(View view) {	
 		this.view=view;
 		
-		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline"};
-		this.setLayout(new GridLayout(buttonLabels.length, 1));
-		for (String label : buttonLabels) {
-			JButton button = new JButton(label);
+		
+		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png"};
+		
+		
+		this.setLayout(new GridLayout(icons.length,1));
+		
+		for(String icon : icons) {
+			JButton button = new JButton();
+			button.setIcon(new ImageIcon(new ImageIcon(this.getClass().getResource(icon)).getImage()));
 			this.add(button);
 			button.addActionListener(this);
 		}
@@ -29,7 +34,7 @@ class ShapeChooserPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.view.getPaintPanel().setMode(e.getActionCommand());
-		System.out.println(e.getActionCommand());
+		//System.out.println(e.getActionCommand());
 	}
 
 	
