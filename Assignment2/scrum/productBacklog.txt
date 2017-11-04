@@ -199,6 +199,38 @@ PRIORITY : Low
 ESTIMATE : 1 Hour
 ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 8
+NAME     : Draw Square
+OWNER    : 
+PRIORITY : Medium
+ESTIMATE : 2 hours
+AS A     : user
+I WANT   : To click on one corner of a square, drag, and release to 
+		   specify two corners of a square to be drawn in the current style.
+SO THAT  : I can add rectangles to my canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 9
+NAME     : Draw Square Feedback
+OWNER    : 
+PRIORITY : Medium
+ESTIMATE : 2 hours
+AS A     : user
+I WANT   : Similarly to Draw Circle Feedback, display the square in mid construction.
+SO THAT  : I can see the square I am about to build on release of the mouse button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 10
+NAME     : Draw Polyline
+OWNER    : 
+PRIORITY : Medium
+ESTIMATE : 2 hours
+AS A     : user
+I WANT   : To create a composition of line segments.
+SO THAT  : I can add polylines to my canvas
+--------------------------------------------------------------------------
+
 
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
