@@ -16,14 +16,19 @@ import java.awt.event.ActionListener;
 class ShapeChooserPanel extends JPanel implements ActionListener {
 	private View view; // So we can talk to our parent or other components of the view
 	private JButton previousButtonClick;
+	private int i = 0;
 	
 	public ShapeChooserPanel(View view) {	
 		this.view=view;
 		
 		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline"};
+		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png"};
+		
 		this.setLayout(new GridLayout(buttonLabels.length, 1));
 		for (String label : buttonLabels) {
 			JButton button = new JButton(label);
+			button.setIcon(new ImageIcon(new ImageIcon(this.getClass().getResource(icons[i])).getImage()));
+			i++;
 			this.add(button);
 			styleButtons(button);
 			button.addActionListener(this);
@@ -33,7 +38,9 @@ class ShapeChooserPanel extends JPanel implements ActionListener {
 	private static void styleButtons(JButton button) {
 		button.setFocusPainted(false);
 		button.setFont(new Font("Arial", Font.BOLD, 22));
-		button.setBackground(new Color(35, 35, 35));
+		button.setVerticalTextPosition(3);
+		button.setHorizontalTextPosition(0);
+		button.setBackground(Color.DARK_GRAY);
 		button.setForeground(new Color(255, 3, 118));
 		Border line = new LineBorder(Color.BLACK);
 		Border margin = new EmptyBorder(2, 5, 2, 5);
@@ -60,7 +67,7 @@ class ShapeChooserPanel extends JPanel implements ActionListener {
 		this.view.getPaintPanel().setMode(e.getActionCommand());
 		button.setEnabled(false);
 		this.previousButtonClick = button;
-		System.out.println(e.getActionCommand());
+		//System.out.println(e.getActionCommand());
 	}
 
 	
