@@ -35,10 +35,10 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private JButton primaryColorButton;
 	private JButton secondaryColorButton;
 	
-	private int brushSize;
+	private int brushSize = 1;
 	private Color primaryColor = Color.white;
 	private Color secondaryColor = Color.white;
-	private boolean isFilled;
+	private boolean isFilled = false;
 	
 	private boolean isChanged;
 	private GridBagConstraints c;
@@ -51,7 +51,6 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	public PalletePanel(PaintModel model) {
 		this.setLayout(new GridBagLayout());
 		this.c = new GridBagConstraints();
-		this.brushSize = 1;
 		this.model = model;
 		this.brushStrategy = new CircleBrushStrategy(this.model);
 		
@@ -134,10 +133,12 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c.gridx = 0;
 		c.gridy = 0;
 		c.ipady = 8;
+		c.gridwidth = 2;
 		JLabel brushTypeLabel = new JLabel("Brush Type: ");
 		brushTypeLabel.setFont(this.font);
 		brushTypeLabel.setForeground(this.textColor);
-		this.add(brushTypeLabel);
+		this.add(brushTypeLabel,c);
+		c.gridwidth = 1;
 		
 		c.gridx=5;
 		this.thicknessLabel = new JLabel("Brush Size: 1 ");

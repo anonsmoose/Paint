@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
 import ca.utoronto.utm.paint.PaintModel;
 import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Shape;
@@ -24,7 +26,10 @@ public class SquiggleBrushStrategy extends ConcreteBrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		squiggle = new Squiggle(this.primaryColor, this.brushSize);
+		Color color = this.primaryColor;
+		if(SwingUtilities.isRightMouseButton(e))
+			color = this.secondaryColor;
+		squiggle = new Squiggle(color, this.brushSize);
 		
 	}
 

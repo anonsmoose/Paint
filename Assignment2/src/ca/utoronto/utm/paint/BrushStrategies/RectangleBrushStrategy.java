@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
 import ca.utoronto.utm.paint.PaintModel;
 import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Rectangle;
@@ -27,7 +29,10 @@ public class RectangleBrushStrategy extends ConcreteBrushStrategy{
 		Point origin = new Point(e.getX(), e.getY());
 		int width = 0;
 		int height = 0;
-		this.rectangle = new Rectangle(origin, width, height, this.primaryColor, this.brushSize, this.isFilled);
+		Color color = this.primaryColor;
+		if(SwingUtilities.isRightMouseButton(e))
+			color = this.secondaryColor;
+		this.rectangle = new Rectangle(origin, width, height, color, this.brushSize, this.isFilled);
 		this.model.addShape(this.rectangle);
 	}
 

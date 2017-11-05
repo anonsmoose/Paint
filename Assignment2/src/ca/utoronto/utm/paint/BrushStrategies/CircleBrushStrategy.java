@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
 import ca.utoronto.utm.paint.PaintModel;
 import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Circle;
@@ -25,7 +27,10 @@ public class CircleBrushStrategy extends ConcreteBrushStrategy{
 	public void mousePressed(MouseEvent e) {
 		Point centre = new Point(e.getX(), e.getY());
 		int radius = 0;
-		this.circle=new Circle(centre, radius,this.primaryColor,this.brushSize, this.isFilled);
+		Color color = this.primaryColor;
+		if(SwingUtilities.isRightMouseButton(e))
+			color = this.secondaryColor;
+		this.circle=new Circle(centre, radius,color,this.brushSize, this.isFilled);
 		this.model.addShape(this.circle);
 	}
 
