@@ -39,9 +39,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private Color primaryColor = Color.white;
 	private Color secondaryColor = Color.white;
 	private boolean isFilled = false;
-	
 	private boolean isChanged;
-	private GridBagConstraints c;
 	
 	private final Font font = new Font("Arial", Font.BOLD, 16);
 	private final Color textColor = new Color(255, 3, 118);
@@ -50,7 +48,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	
 	public PalletePanel(PaintModel model) {
 		this.setLayout(new GridBagLayout());
-		this.c = new GridBagConstraints();
+
 		this.model = model;
 		this.brushStrategy = new CircleBrushStrategy(this.model);
 		
@@ -58,8 +56,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		
 		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline"};
 		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png"};
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 2;
+
 		
 		ActionListener brushButtonListener = new ActionListener(){
 			@Override
@@ -106,7 +103,12 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 			}	
 		};
 		
+		// GUI CONFIGURATION BELOW
 		
+		//Brush buttons
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
 		c.gridx = 0;
 		c.gridy = 1;
 		for(int i = 0; i < icons.length; i++) {
@@ -121,44 +123,61 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 				this.toggleButton(this.selectedBrushButton,button);
 				this.selectedBrushButton = button;
 			}
-
 			c.gridx++;
 		}
-		c.insets = new Insets(0,0,0,0);
-
-		thicknessSlider = new JSlider(1, 10, 1);
-		thicknessLabel = new JLabel("Brush Size 1");
-
-		// Labels
+		
+		// Brush type Label
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.ipady = 8;
-		c.gridwidth = 2;
+		c.gridwidth = 5;
 		JLabel brushTypeLabel = new JLabel("Brush Type: ");
 		brushTypeLabel.setFont(this.font);
 		brushTypeLabel.setForeground(this.textColor);
 		this.add(brushTypeLabel,c);
-		c.gridwidth = 1;
-		
-		c.gridx=5;
+
+		//Brush size Label
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
+		c.gridx = 5;
+		c.gridy = 0;
+		thicknessLabel = new JLabel("Brush Size 1");
 		this.thicknessLabel = new JLabel("Brush Size: 1 ");
 		thicknessLabel.setFont(this.font);
 		thicknessLabel.setForeground(this.textColor);
 		this.add(thicknessLabel, c);
-
+		
+		//Fill Type Label
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
 		c.gridx = 6;
+		c.gridy = 0;
 		JLabel fillLabel = new JLabel("Fill Type: ");
 		fillLabel.setFont(this.font);
 		fillLabel.setForeground(this.textColor);
 		this.add(fillLabel, c);
 
-		c.gridx = 9;
-		JLabel colorLabel = new JLabel("Color : ");
+		//Color Label
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
+		c.gridx = 10;
+		c.gridwidth = 2;
+		c.insets = new Insets(0,0,0,20);
+		JLabel colorLabel = new JLabel("Click to pick a Color");
 		colorLabel.setFont(this.font);
 		colorLabel.setForeground(this.textColor);
 		this.add(colorLabel, c);
 		
-		c.ipady = 0;
+		//Solid Fill Button
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
 		c.gridx = 6;
 		c.gridy = 1;
 		JButton solidButton = new JButton("Solid");
@@ -166,49 +185,65 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		solidButton.addActionListener(fillButtonListener);
 		this.add(solidButton,c);
 		
+		//Outline Fill Button
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
 		c.gridx =  7;
+		c.gridy = 1;
+		c.insets = new Insets(0,0,0,20);
 		JButton outLineButton = new JButton("Outline");
 		styleButton(outLineButton);
 		toggleButton(this.selectedFillButton,outLineButton);
 		this.selectedFillButton = outLineButton;
 		outLineButton.addActionListener(fillButtonListener);
-		c.insets = new Insets(0,0,0,20);
 		this.add(outLineButton,c);
-		c.insets = new Insets(0,0,0,0);
 		
-		
-		c.gridx = 9;
-		c.ipady = 24;
-		primaryColorButton = new JButton();
-		secondaryColorButton = new JButton();
-		primaryColorButton.setActionCommand("1");
-		secondaryColorButton.setActionCommand("2");
-		styleButton(primaryColorButton);
-		styleButton(secondaryColorButton);
-		primaryColorButton.setBackground(Color.WHITE);
-		secondaryColorButton.setBackground(Color.WHITE);
-		c.insets = new Insets(0,0,0,20);
-		this.add(primaryColorButton,c);
+		//Primary Color Button
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
 		c.gridx = 10;
-		c.ipadx = 19;
-		this.add(secondaryColorButton,c);
-		c.insets = new Insets(0,0,0,0);
-		c.ipady = 0;
-		c.ipadx = 0;
+		c.gridy = 1;
+		c.ipady = 32;
+		c.ipadx = 32;
+		c.insets = new Insets(0,0,0,20);
+		primaryColorButton = new JButton();
+		primaryColorButton.setActionCommand("1");
+		styleButton(primaryColorButton);
+		primaryColorButton.setBackground(Color.WHITE);
 		primaryColorButton.addActionListener(this);
+		this.add(primaryColorButton,c);
+		
+		//Secondary Color Button
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
+		c.gridx = 11;
+		c.gridy = 1;
+		c.ipady = 32;
+		c.ipadx = 32;
+		c.insets = new Insets(0,0,0,20);
+		secondaryColorButton = new JButton();
+		secondaryColorButton.setActionCommand("2");
+		styleButton(secondaryColorButton);
+		secondaryColorButton.setBackground(Color.WHITE);
 		secondaryColorButton.addActionListener(this);
+		this.add(secondaryColorButton,c);
 		
 		// Position and Configure Slider
-		c.weightx = 0.5;
+		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
 		c.gridx = 5;
 		c.gridy = 1;
+		c.insets = new Insets(0,0,0,20);
+		thicknessSlider = new JSlider(1, 10, 1);
 		thicknessSlider.setMinorTickSpacing(1);
 		thicknessSlider.setMajorTickSpacing(10);
 		thicknessSlider.setBackground(Color.DARK_GRAY);
 		thicknessSlider.setPaintTicks(true);
 		thicknessSlider.addChangeListener(this);
-		c.insets = new Insets(0,0,0,20);
 		this.add(thicknessSlider, c);
 
 	}
