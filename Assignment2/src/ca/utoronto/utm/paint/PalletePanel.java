@@ -32,9 +32,10 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private JSlider thicknessSlider;
 	private JLabel thicknessLabel;
 	private JColorChooser colorChooser;
+	private JButton primaryColorButton;
 	
 	private int brushSize;
-	private Color primaryColor;
+	private Color primaryColor = Color.white;
 	private Color secondaryColor;
 	private boolean isFilled;
 	
@@ -150,7 +151,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.add(fillLabel, c);
 
 		c.gridx = 9;
-		JLabel colorLabel = new JLabel("Color: ");
+		JLabel colorLabel = new JLabel("Color : ");
 		colorLabel.setFont(this.font);
 		colorLabel.setForeground(this.textColor);
 		this.add(colorLabel, c);
@@ -174,15 +175,16 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		
 		
 		c.gridx = 9;
-		JButton colorButton = new JButton("Color Picker");
-		styleButton(colorButton);
+		primaryColorButton = new JButton();
+		c.ipady = 24;
+		styleButton(primaryColorButton);
+		primaryColorButton.setBackground(Color.WHITE);
 		c.insets = new Insets(0,0,0,20);
-		this.add(colorButton,c);
+		this.add(primaryColorButton,c);
 		c.insets = new Insets(0,0,0,0);
+		c.ipady = 0;
 		
-		colorButton.addActionListener(this);
-		solidButton.addActionListener(this);
-		outLineButton.addActionListener(this);
+		primaryColorButton.addActionListener(this);
 		// Position and Configure Slider
 		c.weightx = 0.5;
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -275,7 +277,6 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	public void actionPerformed(ActionEvent e) {
 		JButton jb = (JButton) e.getSource();
 
-		if (jb.getText() == "Color Picker") {
 			this.colorChooser = new JColorChooser();
 			final JLabel preview = new JLabel(
 					"" + "The proof is trivial and has been left as an " + "exercise for the reader.", JLabel.CENTER);
@@ -302,8 +303,8 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 
 			dialog.setVisible(true);
 
-		}
-		
+	
+		this.primaryColorButton.setBackground(this.primaryColor);
 		this.updateBrushStrategy();
 	}
 }
