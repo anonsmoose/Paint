@@ -274,10 +274,6 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.primaryColor = c;
 	}
 
-	public Color getColor() {
-		return this.primaryColor;
-	}
-	
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		this.brushSize = ((JSlider) e.getSource()).getValue();
