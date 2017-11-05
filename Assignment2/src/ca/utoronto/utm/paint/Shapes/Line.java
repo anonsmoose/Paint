@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import ca.utoronto.utm.paint.Point;
+
 public class Line implements Shape {
 	private int p1x,p1y,p2x,p2y;
 	private Color color;
@@ -29,6 +31,11 @@ public class Line implements Shape {
 		this.drawn = false;
 		this.color = color;
 		this.thickness = thickness;
+	}
+	
+	public void setDestination(Point p){
+		this.p2x = p.getX();
+		this.p2y = p.getY();
 	}
 	@Override
 	public void drawShape(Graphics g) {

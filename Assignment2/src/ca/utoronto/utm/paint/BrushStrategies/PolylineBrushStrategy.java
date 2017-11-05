@@ -3,28 +3,41 @@ package ca.utoronto.utm.paint.BrushStrategies;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
+import javax.swing.SwingUtilities;
+
 import ca.utoronto.utm.paint.PaintModel;
+import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Line;
 
 public class PolylineBrushStrategy extends ConcreteBrushStrategy {
-	
+	private Point origin;
+	private Point destination;
+	private Line line;
 	
 	public PolylineBrushStrategy(PaintModel model){
 		this.model = model;
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-	
+		if(this.origin == null)
+			this.origin = new Point(e.getX(),e.getY());
+		this.destination = new Point(e.getX(),e.getY());
+		Color color = this.primaryColor;
+		if(SwingUtilities.isRightMouseButton(e))
+			color = this.secondaryColor;
+		this.line = new Line(origin.getX(),origin.getY(),destination.getX(),destination.getY(),color,this.getBrushSize());
+		this.model.addShape(line);
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		this.origin = this.destination;
 
 	}
 
@@ -48,7 +61,8 @@ public class PolylineBrushStrategy extends ConcreteBrushStrategy {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
+		destination = new Point(e.getX(),e.getY());
+		this.line.setDestination(destination);
 
 	}
 
