@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -40,7 +41,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private boolean isChanged;
 	private GridBagConstraints c;
 	
-	private final Font font = new Font("Arial", Font.BOLD, 12);
+	private final Font font = new Font("Arial", Font.BOLD, 16);
 	private final Color textColor = new Color(255, 3, 118);
 	private JButton selectedBrushButton;
 	private JButton selectedFillButton;
@@ -111,14 +112,18 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 			JButton button = new JButton(new ImageIcon("images\\" + icons[i]));
 			button.setActionCommand(buttonLabels[i]);
 			styleButton(button);
+			if(i==4)
+				c.insets = new Insets(0,0,0,20);
 			this.add(button,c);
 			button.addActionListener(brushButtonListener);
 			if(i == 0){
 				this.toggleButton(this.selectedBrushButton,button);
 				this.selectedBrushButton = button;
 			}
+
 			c.gridx++;
 		}
+		c.insets = new Insets(0,0,0,0);
 
 		thicknessSlider = new JSlider(1, 10, 1);
 		thicknessLabel = new JLabel("Brush Size 1");
@@ -135,13 +140,20 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c.gridx=5;
 		this.thicknessLabel = new JLabel("Brush Size: 1 ");
 		thicknessLabel.setFont(this.font);
+		thicknessLabel.setForeground(this.textColor);
 		this.add(thicknessLabel, c);
 
 		c.gridx = 6;
-		this.add(new JLabel("Fill Type: "), c);
+		JLabel fillLabel = new JLabel("Fill Type: ");
+		fillLabel.setFont(this.font);
+		fillLabel.setForeground(this.textColor);
+		this.add(fillLabel, c);
 
 		c.gridx = 9;
-		this.add(new JLabel("Color: "), c);
+		JLabel colorLabel = new JLabel("Color: ");
+		colorLabel.setFont(this.font);
+		colorLabel.setForeground(this.textColor);
+		this.add(colorLabel, c);
 		
 		c.gridx = 6;
 		c.gridy = 1;
@@ -156,12 +168,17 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		toggleButton(this.selectedFillButton,outLineButton);
 		this.selectedFillButton = outLineButton;
 		outLineButton.addActionListener(fillButtonListener);
+		c.insets = new Insets(0,0,0,20);
 		this.add(outLineButton,c);
+		c.insets = new Insets(0,0,0,0);
+		
 		
 		c.gridx = 9;
 		JButton colorButton = new JButton("Color Picker");
 		styleButton(colorButton);
+		c.insets = new Insets(0,0,0,20);
 		this.add(colorButton,c);
+		c.insets = new Insets(0,0,0,0);
 		
 		colorButton.addActionListener(this);
 		solidButton.addActionListener(this);
@@ -175,6 +192,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		thicknessSlider.setMajorTickSpacing(10);
 		thicknessSlider.setPaintTicks(true);
 		thicknessSlider.addChangeListener(this);
+		c.insets = new Insets(0,0,0,20);
 		this.add(thicknessSlider, c);
 
 	}
