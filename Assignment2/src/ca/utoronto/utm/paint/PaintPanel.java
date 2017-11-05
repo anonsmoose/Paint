@@ -22,12 +22,9 @@ import java.util.Observer;
 // https://docs.oracle.com/javase/tutorial/2d/
 
 class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseListener  {
-	private int i=0;
 	private PaintModel model; // slight departure from MVC, because of the way painting works
 	private View view; // So we can talk to our parent or other components of the view
 	private BrushStrategy brushStrategy;
-	private Circle circle; // the circle we are building
-	private Rectangle rectangle;
 	
 	public PaintPanel(PaintModel model, View view){
 		this.setBackground(new Color(43, 43, 43));
@@ -71,27 +68,15 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 	public void update(Observable o, Object arg) {
 		// Not exactly how MVC works, but similar.
 		this.repaint(); // Schedule a call to paintComponent
+		if(this.view.getPalletePanel().toggleChanged()){
+			this.brushStrategy = this.view.getPalletePanel().getBrushStrategy();
+		}
 	}
 	
 	/**
 	 *  Controller aspect of this
 	 */
-	public void setMode(String mode){
-		switch(mode){
-		case "Circle":
-			this.brushStrategy = new CircleBrushStrategy(this.model);
-			break;
-			
-		case "Squiggle":
-			this.brushStrategy = new SquiggleBrushStrategy(this.model);
-			break;
-			
-		case "Rectangle":
-			this.brushStrategy = new RectangleBrushStrategy(this.model);
-			break;
-		}
-	}
-	
+
 	// MouseMotionListener below
 	@Override
 	public void mouseMoved(MouseEvent e) {

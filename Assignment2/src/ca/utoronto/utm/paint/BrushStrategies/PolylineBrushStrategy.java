@@ -5,11 +5,10 @@ import java.awt.event.MouseEvent;
 
 import ca.utoronto.utm.paint.PaintModel;
 
-public class PolylineBrushStrategy implements BrushStrategy {
-	private PaintModel model;
-	private int brushSize = 1;
-	private Color color = Color.black;
-	public PolylineBrushStrategy(){
+public class PolylineBrushStrategy extends ConcreteBrushStrategy {
+	
+	
+	public PolylineBrushStrategy(PaintModel model){
 		this.model = model;
 	}
 	@Override
@@ -20,8 +19,7 @@ public class PolylineBrushStrategy implements BrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.brushSize = this.model.getBrushSize();
-		//this.Color = this.model.getColor();
+	
 	}
 
 	@Override

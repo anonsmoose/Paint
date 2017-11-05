@@ -39,7 +39,14 @@ public class PaintModel extends Observable {
 		return this.brushColor;
 	}
 	public void addShape(Shape s){
-		this.shapes.add(s);
+		if(!this.shapes.contains(s))
+			this.shapes.add(s);
+		
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public void notifyBrushChanged(){
 		this.setChanged();
 		this.notifyObservers();
 	}

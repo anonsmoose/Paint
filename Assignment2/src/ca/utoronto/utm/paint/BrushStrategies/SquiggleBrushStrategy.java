@@ -9,14 +9,13 @@ import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Shape;
 import ca.utoronto.utm.paint.Shapes.Squiggle;
 
-public class SquiggleBrushStrategy implements BrushStrategy {
-	private PaintModel model;
+public class SquiggleBrushStrategy extends ConcreteBrushStrategy {
 	private Squiggle squiggle;
-	private int brushSize = 1;
-	private Color color = Color.black;
+	
 	public SquiggleBrushStrategy(PaintModel model){
 		this.model = model;
 	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -25,9 +24,7 @@ public class SquiggleBrushStrategy implements BrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.brushSize = this.model.getBrushSize();
-		this.color = this.model.getColor();
-		squiggle = new Squiggle(this.color, this.brushSize);
+		squiggle = new Squiggle(this.primaryColor, this.brushSize);
 		
 	}
 
@@ -58,13 +55,9 @@ public class SquiggleBrushStrategy implements BrushStrategy {
 	@Override 
 	public void mouseDragged(MouseEvent e) { 
 		if(this.squiggle != null){
-			ArrayList<Shape> shapes = this.model.getShapes();
 			this.squiggle.addPoint(new Point(e.getX(), e.getY()));
-			if(!(shapes.contains(this.squiggle)))
-			{
-			this.model.addShape(this.squiggle);
-			}
 		}	
+		this.model.addShape(this.squiggle);
 	}
 
 }

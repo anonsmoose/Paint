@@ -31,8 +31,8 @@ public class View extends JFrame implements ActionListener {
 		// c.add(new JButton("North"),BorderLayout.NORTH);
 		// c.add(new JButton("South"),BorderLayout.SOUTH);
 		// c.add(new JButton("East"),BorderLayout.EAST);
-		this.shapeChooserPanel = new ShapeChooserPanel(this);
-		c.add(this.shapeChooserPanel,BorderLayout.WEST);
+		//this.shapeChooserPanel = new ShapeChooserPanel(this);
+		//c.add(this.shapeChooserPanel,BorderLayout.WEST);
 	
 		this.model=model;
 		

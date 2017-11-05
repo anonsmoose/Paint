@@ -9,13 +9,9 @@ import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Circle;
 import ca.utoronto.utm.paint.Shapes.Shape;
 
-public class CircleBrushStrategy implements BrushStrategy{
+public class CircleBrushStrategy extends ConcreteBrushStrategy{
 	private Circle circle;
-	private PaintModel model;
-	private int brushSize;
-	private boolean solid;
-	private Color color = Color.black;
-	
+
 	public CircleBrushStrategy(PaintModel model){
 		this.model = model;
 	}
@@ -27,22 +23,14 @@ public class CircleBrushStrategy implements BrushStrategy{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.brushSize = this.model.getBrushSize();
-		this.color = this.model.getColor();
 		Point centre = new Point(e.getX(), e.getY());
 		int radius = 0;
-		this.circle=new Circle(centre, 0,this.color,this.brushSize, model.getSolid());
+		this.circle=new Circle(centre, radius,this.primaryColor,this.brushSize, this.isFilled);
+		this.model.addShape(this.circle);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(this.circle!=null){
-			// Problematic notion of radius and centre!!
-/*			int radius = Math.abs(this.circle.getCentre().getX()-e.getX());
-			this.circle.setRadius(radius);
-			this.model.addCircle(this.circle);
-			this.circle=null;*/
-		}
 		
 	}
 
@@ -67,14 +55,10 @@ public class CircleBrushStrategy implements BrushStrategy{
 	@Override
 	public void mouseDragged(MouseEvent e) { 
 		if(this.circle != null){
-			ArrayList<Shape> shapes = this.model.getShapes();
 			int radius = this.circle.getCentre().getX() - e.getX();
 			this.circle.setRadius(radius);
-			if(!(shapes.contains(this.circle)))
-			{
-			this.model.addShape(this.circle);
-			}
 		}
+		this.model.addShape(this.circle);
 	}
 
 }
