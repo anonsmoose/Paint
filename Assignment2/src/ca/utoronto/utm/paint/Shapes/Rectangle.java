@@ -16,6 +16,15 @@ public class Rectangle implements Shape{
 	private Point origin;
 	private boolean solid;
 	
+	/**
+	 * Constructs a new rectangle.
+	 * @param o Point corresponding to the origin of the rectangle.
+	 * @param height The height of the rectangle.
+	 * @param width The with of the rectangle.
+	 * @param color The color of the rectangle.
+	 * @param brushSize The thickness of the rectangle.
+	 * @param solid If the rectangle is filled or not. 
+	 */
 	public Rectangle(Point o, int height, int width,Color color,int brushSize, boolean solid)
 	{
 		this.solid = solid;
@@ -26,36 +35,62 @@ public class Rectangle implements Shape{
 		this.brushSize = brushSize;
 	}
 	
+	/**
+	 *  returns the origin
+	 * @return returns the origin of the rectangle.
+	 */
 	public Point getOrigin()
 	{
 		return this.origin;
 	}
 	
+	/**
+	 * Set the origin
+	 * @param a point corresponding to the origin.
+	 */
 	public void setOrigin(Point c)
 	{
 		this.origin = c;
 	}
 	
+	/**
+	 * Grabs the height of the rectangle.
+	 * @return returns the height of the rectangle.
+	 */
 	public int getheight()
 	{
 		return this.height;
 	}
 	
+	/**
+	 * Set the height of the rectangle.
+	 * @param Integer corresponding the height of the rectangle.
+	 */
 	public void setheight(int l)
 	{
 		this.height = l;
 	}
 	
+	/**
+	 * Grabs the width of the rectangle.
+	 * @return returns an integer correspondiing to the width of the rectangle.
+	 */
 	public int getWidth()
 	{
 		return this.width;
 	}
 	
+	/**
+	 * Set the width of the rectangle.
+	 * @param width Sets the width of the rectangle to the given integer.
+	 */
 	public void setWidth(int width)
 	{
 		this.width = width;
 	}
-
+	/**
+	 * Instructions that determine how the rectangle is drawn.
+	 */
 	@Override
 	public void drawShape(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;

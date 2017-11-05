@@ -22,7 +22,7 @@ public class Circle implements Shape {
 		this.brushSize = brushSize;
 		this.color = color;
 	}
-
+	
 	public Point getCentre() {
 		return centre;
 	}
