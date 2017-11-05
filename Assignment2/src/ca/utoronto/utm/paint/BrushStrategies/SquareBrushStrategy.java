@@ -3,7 +3,11 @@ package ca.utoronto.utm.paint.BrushStrategies;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
+import javax.swing.SwingUtilities;
+
 import ca.utoronto.utm.paint.PaintModel;
+import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Rectangle;
 import ca.utoronto.utm.paint.Shapes.Square;
 
 public class SquareBrushStrategy extends ConcreteBrushStrategy {
@@ -20,7 +24,14 @@ public class SquareBrushStrategy extends ConcreteBrushStrategy {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-
+		Point origin = new Point(e.getX(), e.getY());
+		int width = 0;
+		int height = 0;
+		Color color = this.primaryColor;
+		if(SwingUtilities.isRightMouseButton(e))
+			color = this.secondaryColor;
+		this.square = new Square(origin, width, height, color, this.brushSize, this.isFilled);
+		this.model.addShape(this.square);
 	}
 
 	@Override
@@ -49,7 +60,13 @@ public class SquareBrushStrategy extends ConcreteBrushStrategy {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(this.square != null){
+			int xdiff = this.square.getOrigin().getX() - e.getX();
+			int ydiff = this.square.getOrigin().getY() - e.getY();
+			this.square.setYdiff(ydiff);
+			this.square.setXdiff(xdiff);
+		}
+		this.model.addShape(this.square);
 
 	}
 
