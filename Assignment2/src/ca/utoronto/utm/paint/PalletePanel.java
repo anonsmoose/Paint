@@ -33,10 +33,11 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private JLabel thicknessLabel;
 	private JColorChooser colorChooser;
 	private JButton primaryColorButton;
+	private JButton secondaryColorButton;
 	
 	private int brushSize;
 	private Color primaryColor = Color.white;
-	private Color secondaryColor;
+	private Color secondaryColor = Color.white;
 	private boolean isFilled;
 	
 	private boolean isChanged;
@@ -132,7 +133,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		// Labels
 		c.gridx = 0;
 		c.gridy = 0;
-		
+		c.ipady = 8;
 		JLabel brushTypeLabel = new JLabel("Brush Type: ");
 		brushTypeLabel.setFont(this.font);
 		brushTypeLabel.setForeground(this.textColor);
@@ -156,6 +157,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		colorLabel.setForeground(this.textColor);
 		this.add(colorLabel, c);
 		
+		c.ipady = 0;
 		c.gridx = 6;
 		c.gridy = 1;
 		JButton solidButton = new JButton("Solid");
@@ -175,16 +177,26 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		
 		
 		c.gridx = 9;
-		primaryColorButton = new JButton();
 		c.ipady = 24;
+		primaryColorButton = new JButton();
+		secondaryColorButton = new JButton();
+		primaryColorButton.setActionCommand("1");
+		secondaryColorButton.setActionCommand("2");
 		styleButton(primaryColorButton);
+		styleButton(secondaryColorButton);
 		primaryColorButton.setBackground(Color.WHITE);
+		secondaryColorButton.setBackground(Color.WHITE);
 		c.insets = new Insets(0,0,0,20);
 		this.add(primaryColorButton,c);
+		c.gridx = 10;
+		c.ipadx = 19;
+		this.add(secondaryColorButton,c);
 		c.insets = new Insets(0,0,0,0);
 		c.ipady = 0;
-		
+		c.ipadx = 0;
 		primaryColorButton.addActionListener(this);
+		secondaryColorButton.addActionListener(this);
+		
 		// Position and Configure Slider
 		c.weightx = 0.5;
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -192,6 +204,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c.gridy = 1;
 		thicknessSlider.setMinorTickSpacing(1);
 		thicknessSlider.setMajorTickSpacing(10);
+		thicknessSlider.setBackground(Color.DARK_GRAY);
 		thicknessSlider.setPaintTicks(true);
 		thicknessSlider.addChangeListener(this);
 		c.insets = new Insets(0,0,0,20);
@@ -276,18 +289,18 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton jb = (JButton) e.getSource();
-
 			this.colorChooser = new JColorChooser();
-			final JLabel preview = new JLabel(
-					"" + "The proof is trivial and has been left as an " + "exercise for the reader.", JLabel.CENTER);
-			preview.setFont(new Font("Arial", Font.BOLD, 40));
-			preview.setSize(preview.getPreferredSize());
-			preview.setBorder(BorderFactory.createEmptyBorder(0, 0, 1, 0));
-			colorChooser.setPreviewPanel(preview);
+
 			ActionListener okActionListener = new ActionListener() {
 				public void actionPerformed(ActionEvent actionEvent) {
-					System.out.println(colorChooser.getColor());
-					setColor(colorChooser.getColor());
+					if(e.getActionCommand() == "1"){
+						primaryColor = colorChooser.getColor();	
+						primaryColorButton.setBackground(primaryColor);
+					}
+					else{
+						secondaryColor = colorChooser.getColor();
+						secondaryColorButton.setBackground(secondaryColor);
+					}
 					model.notifyBrushChanged();
 				}
 			};
