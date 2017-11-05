@@ -202,33 +202,35 @@ ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 TYPE     : USER STORY 8
 NAME     : Draw Square
-OWNER    : 
+OWNER    : Patrick O'Connor
 PRIORITY : Medium
 ESTIMATE : 2 hours
 AS A     : user
 I WANT   : To click on one corner of a square, drag, and release to 
 		   specify two corners of a square to be drawn in the current style.
-SO THAT  : I can add rectangles to my canvas
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY 9
-NAME     : Draw Square Feedback
-OWNER    : 
-PRIORITY : Medium
-ESTIMATE : 2 hours
-AS A     : user
-I WANT   : Similarly to Draw Circle Feedback, display the square in mid construction.
-SO THAT  : I can see the square I am about to build on release of the mouse button.
+SO THAT  : I can add squares to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY 10
 NAME     : Draw Polyline
-OWNER    : 
+OWNER    : Patrick O'Connor
 PRIORITY : Medium
-ESTIMATE : 2 hours
+ESTIMATE : 1 hour
 AS A     : user
 I WANT   : To create a composition of line segments.
 SO THAT  : I can add polylines to my canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 11
+NAME     : Add Secondary Color
+OWNER    : Patrick O'Connor
+PRIORITY : Medium
+ESTIMATE : 1 hour
+AS A     : user
+I WANT   : To be able to select a second color in the same way as User Story 5,
+			to be used interchangebly with my first color by clicking the right
+			mouse button instead of the left.
+SO THAT  : Use multiple colors at once.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG 8
@@ -238,9 +240,9 @@ PRIORITY : Medium
 ESTIMATE : 2 Hours
 ISSUE    : Right now for a brush strategy to get color/fill/size info it is passed
 			the PaintModel in its constructor which it then uses to access the palette panel. This isn't
-			great because a brushStrategy shouldn't need to know about the model to exist. Will fix
-			this by constructing the brushStrategies factory style in the palette panel itself when
-			the PaintPanel needs it too.
+			great because a brushStrategy shouldn't need to know about the details of model to exist, 
+			only how it needs to modify it. Will fix this by constructing the brushStrategies factory 
+			style in the palette panel itself when the PaintPanel needs it too.
 --------------------------------------------------------------------------
 
 

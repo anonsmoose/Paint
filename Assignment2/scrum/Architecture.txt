@@ -42,7 +42,7 @@ DESIGN PATTERNS USED
 	Command: 
 	Singleton:
 	Composite: Used to simplify the storage and rendering of shapes.
-	Factory:
+	Factory: Sort of used this to build brush strategies in palette panel.
 	Builder:
 	Observer/Observable:
 	... (any others you find useful) ...
