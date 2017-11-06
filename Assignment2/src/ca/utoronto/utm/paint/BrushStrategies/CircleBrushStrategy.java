@@ -63,8 +63,8 @@ public class CircleBrushStrategy extends ConcreteBrushStrategy{
 	@Override
 	public void mouseDragged(MouseEvent e) { 
 		if(this.circle != null){
-			int radius = this.circle.getCentre().getX() - e.getX();
-			this.circle.setRadius(radius);
+			Double radius = new Double(Math.sqrt(Math.pow(this.circle.getCentre().getX() - e.getX(),2) + Math.pow(this.circle.getCentre().getY() - e.getY(),2)));
+			this.circle.setRadius(radius.intValue());
 		}
 		this.model.addShape(this.circle);
 	}

@@ -185,7 +185,8 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c.weightx = 2;
 		c.gridx = 6;
 		c.gridy = 1;
-		JButton solidButton = new JButton("Solid");
+		JButton solidButton = new JButton(new ImageIcon("images///square1BlueFill.png"));
+		solidButton.setActionCommand("Solid");
 		styleButton(solidButton);
 		solidButton.addActionListener(fillButtonListener);
 		this.add(solidButton,c);
@@ -196,8 +197,8 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c.weightx = 2;
 		c.gridx =  7;
 		c.gridy = 1;
-		c.insets = new Insets(0,0,0,20);
-		JButton outLineButton = new JButton("Outline");
+		JButton outLineButton = new JButton(new ImageIcon("images///square1BlueOutline5.png"));
+		outLineButton.setActionCommand("Outline");
 		styleButton(outLineButton);
 		toggleButton(this.selectedFillButton,outLineButton);
 		this.selectedFillButton = outLineButton;
@@ -211,7 +212,8 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c.gridx =  8;
 		c.gridy = 1;
 		c.insets = new Insets(0,0,0,20);
-		JButton secondaryFillButton = new JButton("Secondary Filled");
+		JButton secondaryFillButton = new JButton(new ImageIcon("images///square1BlueOutline3.png"));
+		secondaryFillButton.setActionCommand("Secondary Filled");
 		styleButton(secondaryFillButton);
 		secondaryFillButton.addActionListener(fillButtonListener);
 		this.add(secondaryFillButton,c);
