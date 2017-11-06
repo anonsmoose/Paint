@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import ca.utoronto.utm.paint.BrushStrategies.BrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.CircleBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.ConcreteBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.PolylineBrushStrategy;

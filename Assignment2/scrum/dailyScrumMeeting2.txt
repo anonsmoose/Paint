@@ -1,39 +1,10 @@
 # Fill in, commit and push each day.
-# Group Member: FILL THIS IN
+# Group Member: Patrick O'Connor oconn139
 
-Oct 23, 2017
+Oct 23-29, 2017
 	Yesterday :
-	Today     :
-	Obstacles :
-
-Oct 24, 2017
-	Yesterday :
-	Today     :
-	Obstacles :
-
-Oct 25, 2017
-	Yesterday :
-	Today     :
-	Obstacles :
-
-Oct 26, 2017
-	Yesterday :
-	Today     :
-	Obstacles :
-
-Oct 27, 2017
-	Yesterday :
-	Today     :
-	Obstacles :
-
-Oct 28, 2017
-	Yesterday :
-	Today     :
-	Obstacles :
-
-Oct 29, 2017
-	Yesterday :
-	Today     :
+	Today     : Nothing on these days besides reviewing the starter code and thinking about how we should go
+					about things.
 	Obstacles :
 
 Oct 30, 2017
@@ -42,32 +13,39 @@ Oct 30, 2017
 	Obstacles :
 
 Oct 31, 2017
-	Yesterday : Sprint Planning Meeting
+	Yesterday : Sprint Planning Meeting with Clarice and Peter
 	Today     : Improve architecture of brush selection and shape storage for the purpose of fixing bugs 3-5. 
 					work on other bugs and user stories if the time permits.
 	Obstacles :
 
 Nov 1, 2017
-	Yesterday :
-	Today     :
+	Yesterday : Fixed bugs and improved the architectural back-end of the project.
+	Today     : Add a new panel for the purposes of User Stories 5-7 and implement some of them if time
+					permits.
 	Obstacles :
 	
 Nov 2, 2017
-	Yesterday :
-	Today     :
-	Obstacles :
+	Yesterday : Created and added a pallete panel to the paint view, implemented brush size feature.
+	Today     : Turn my attention to other classes while Peter and Clarice begin working on other
+					features.
+	Obstacles : 
 	
 Nov 3, 2017
-	Yesterday :
-	Today     :
+	Yesterday : Peter implemented color selection and fill style selection and added it to the pallete panel.
+	Today     : Won't have time to work on the assignment today.
 	Obstacles :
 
 Nov 4, 2017
-	Yesterday :
-	Today     :
+	Yesterday : Planned some additional features I would like to add.
+	Today     : Do away with the ShapeChoosePanel and instead move brush selection into the pallete panel,
+					make some architectural change to brushStrategies and make pallete panel a brushstrategy
+					factory. Improve the look and feel of the pallete panel. Implement additional feautures if
+					time permits.
 	Obstacles :
 
 Nov 5, 2017
-	Yesterday :
-	Today     :
+	Yesterday : Made some major GUI changes and began to implement a secondary color feature.
+	Today     : Finish implementing secondary colors. Implement square and polyline brushes. Do some janitorial work
+					to make the code more readable. Implement a new fill style which draws a shape outlined in the primary
+					color and filled with the secondary color. Add necessary documentation and submit the assignment.
 	Obstacles :
