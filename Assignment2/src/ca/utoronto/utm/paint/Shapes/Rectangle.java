@@ -103,7 +103,7 @@ public class Rectangle implements Shape{
 		int y= getOrigin().getY();
 		int height = getheight();
 		int width = getWidth();
-		System.out.println("" + x +" " + y +" " +height+" " +width);
+		
 		if(width > 0)
 			x = x - width;
 		else width = -1 * width;
@@ -112,7 +112,7 @@ public class Rectangle implements Shape{
 			y = y - height;
 		else height = -1 * height;
 		
-		System.out.println("" + x +" " + y +" " +height+" " +width);
+		
 		g2d.drawRect(x, y, width, height);
 		if(this.fillStyle.equals("Solid"))
 			g2d.fillRect(x, y, width, height);

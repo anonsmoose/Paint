@@ -69,7 +69,7 @@ class ShapeChooserPanel extends JPanel implements ActionListener {
 		//this.view.getPaintPanel().setMode(e.getActionCommand());
 		button.setEnabled(false);
 		this.previousButtonClick = button;
-		//System.out.println(e.getActionCommand());
+		
 	}
 
 	

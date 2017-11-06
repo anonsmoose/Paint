@@ -47,7 +47,7 @@ class ScribblePanel extends JPanel implements MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		System.out.println("Dragged " +arg0.getX()+" "+arg0.getY());
+		
 		this.drawingPoints.add(new Pair(arg0.getX(), arg0.getY()));
 		this.repaint(); // schedule a call to paint (and so paintComponent)
 	}
