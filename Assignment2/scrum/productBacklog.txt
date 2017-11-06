@@ -8,16 +8,16 @@
 --------------------------------------------------------------------------
 TYPE     : USER STORY 1
 NAME     : Draw Circle
-OWNER    : 
-PRIORITY :
-ESTIMATE : 
+OWNER    : Arnold
+PRIORITY : Medium
+ESTIMATE : 0 Hours
 AS A     : user
 I WANT   : To click the center of the circle, drag, and release to specify
            a circle to be drawn in the current style.
 SO THAT  : I can add circles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 2
+TYPE     : USER STORY 2 : tamrazpe
 NAME     : Draw Circle Feedback
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -32,7 +32,7 @@ SO THAT  : I can see the circle I am about to build on release of the mouse
            button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 3
+TYPE     : USER STORY 3 : tamrazpe
 NAME     : Draw Rectangle
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -43,7 +43,7 @@ I WANT   : To click on one corner of a rectangle, drag, and release to
 SO THAT  : I can add rectangles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 4
+TYPE     : USER STORY 4 : tamrazpe
 NAME     : Draw Rectangle Feedback
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -53,88 +53,7 @@ I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid const
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 3
-NAME     : Architecture behind choosing selection mode is poor
-OWNER    : Patrick O'Connor
-PRIORITY : High
-ESTIMATE : 2 Hours
-ISSUE    : Code is not modular and is difficult to expand. Need a better
-           architecture behind selecting a drawing mode, and handling
-           the drawing events. Consider some design patterns here.
-           Refactor ShapeChooserPanel and PaintPanel to get rid of the
-           'if' blocks in the PaintPanel mouse event code.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG 4
-NAME     : Architecture behind Model is poor
-OWNER    : Patrick O'Connor
-PRIORITY : High
-ESTIMATE : 2 Hours
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. Need to re-architect the Model
-           so that it is more flexible, and easier to work with.
-           Consider some design patterns, or change of responsibility
-           here.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG 5
-NAME     : Squiggle is broken
-OWNER    : Patrick O'Connor
-PRIORITY : Medium
-ESTIMATE : 1 hour
-ISSUE    : Squiggles are connected to each other by a straight line. Each drag
-		   of the mouse should be a separate squiggle. Possibly
-           the issue is with the representation of the squiggles in the Model.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG 6
-NAME     : Circle drawing is broken
-OWNER    : Patrick O'Connor
-PRIORITY : Low
-ESTIMATE : < 1 Hour
-ISSUE    : The first click should specify the center of the circle, with
-           a drag for the radius. This is not the case in the current
-           implementation.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY 7
-NAME     : Line thickness selector
-OWNER    : Patrick O'Connor
-PRIORITY : Medium
-ESTIMATE : 2 Hours
-AS A     : user
-I WANT   : To be able to select the current line thickness, to be applied
-           to subsequent shapes. Example:
-           		select fill style outline 
-           		selects line thickness 1
-           		mode circle
-           		draw a circle
-           		draw a circle
-           		mode rectangle
-           		draw a rectangle
-           		select line thickness 9
-           		draw a rectangle
-           		draw a rectangle
-           		select mode squiggle
-           		draw a squiggle
-           	results in two thinly outlined circles and a thinly outlined 
-           	rectangle as well as two thickly outlined rectangles and a thick squiggle
-SO THAT  : 
---------------------------------------------------------------------------
-
---------------------------------------------------------------------------
-TYPE     : BUG 7
-NAME     : The program slows down significantly as the number of shapes increases
-OWNER    : Peter Tamraz 
-PRIORITY : Medium
-ESTIMATE : 2 Hours
-ISSUE    : Shapes that have already been drawn are continually redrawn each
-			time a change is made, as a result when the total amount of shapes
-			is large, the program lags when additional changes are made.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY 5
+TYPE     : USER STORY 5 : tamrazpe
 NAME     : Color selector
 OWNER    : Peter Tamraz
 PRIORITY : High
@@ -158,7 +77,7 @@ I WANT   : To be able to select the current drawing color, to be applied
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 6
+TYPE     : USER STORY 6 : tamrazpe
 NAME     : Fill style selector
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -182,25 +101,32 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 2
-NAME     : Drawing selection mode not indicated
-OWNER    : Peter Tamraz
-PRIORITY : Low
-ESTIMATE : 1 Hour
-ISSUE    : Currently ,you can't tell which mode "Circle", "Rectangle", ...
-           is currently selected. Is JButton correct, is there a way
-           to highlight the currently selected mode?
+TYPE     : USER STORY 7 : oconn139
+NAME     : Line thickness selector
+OWNER    : Patrick O'Connor
+PRIORITY : Medium
+ESTIMATE : 2 Hours
+AS A     : user
+I WANT   : To be able to select the current line thickness, to be applied
+           to subsequent shapes. Example:
+           		select fill style outline 
+           		selects line thickness 1
+           		mode circle
+           		draw a circle
+           		draw a circle
+           		mode rectangle
+           		draw a rectangle
+           		select line thickness 9
+           		draw a rectangle
+           		draw a rectangle
+           		select mode squiggle
+           		draw a squiggle
+           	results in two thinly outlined circles and a thinly outlined 
+           	rectangle as well as two thickly outlined rectangles and a thick squiggle
+SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 1
-NAME     : Icons instead of text for drawing mode selection
-OWNER    : Clarice Jara
-PRIORITY : Low
-ESTIMATE : 1 Hour
-ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY 8
+TYPE     : USER STORY 8 : oconn139
 NAME     : Draw Square
 OWNER    : Patrick O'Connor
 PRIORITY : Medium
@@ -211,7 +137,17 @@ I WANT   : To click on one corner of a square, drag, and release to
 SO THAT  : I can add squares to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 10
+TYPE     : USER STORY 9 : tamrazpe
+NAME     : Improve GUI
+OWNER    : Peter Tamraz
+PRIORITY : Low
+ESTIMATE : 2 hours
+AS A     : user
+I WANT   : An improved GUI
+SO THAT  : I 
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 10 : oconn139
 NAME     : Draw Polyline
 OWNER    : Patrick O'Connor
 PRIORITY : Medium
@@ -221,7 +157,7 @@ I WANT   : To create a composition of line segments.
 SO THAT  : I can add polylines to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 11
+TYPE     : USER STORY 11 : oconn139
 NAME     : Add Secondary Color
 OWNER    : Patrick O'Connor
 PRIORITY : Medium
@@ -233,7 +169,80 @@ I WANT   : To be able to select a second color in the same way as User Story 5,
 SO THAT  : Use multiple colors at once.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 8
+TYPE     : BUG 1
+NAME     : Icons instead of text for drawing mode selection
+OWNER    : Clarice Jara
+PRIORITY : Low
+ESTIMATE : 1 Hour
+ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 2 : tamrazpe
+NAME     : Drawing selection mode not indicated
+OWNER    : Peter Tamraz
+PRIORITY : Low
+ESTIMATE : 1 Hour
+ISSUE    : Currently ,you can't tell which mode "Circle", "Rectangle", ...
+           is currently selected. Is JButton correct, is there a way
+           to highlight the currently selected mode?
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 3 : oconn139
+NAME     : Architecture behind choosing selection mode is poor
+OWNER    : Patrick O'Connor
+PRIORITY : High
+ESTIMATE : 2 Hours
+ISSUE    : Code is not modular and is difficult to expand. Need a better
+           architecture behind selecting a drawing mode, and handling
+           the drawing events. Consider some design patterns here.
+           Refactor ShapeChooserPanel and PaintPanel to get rid of the
+           'if' blocks in the PaintPanel mouse event code.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 4 : oconn139
+NAME     : Architecture behind Model is poor
+OWNER    : Patrick O'Connor
+PRIORITY : High
+ESTIMATE : 2 Hours
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. In fact, it is currently incorrect, with
+           Squiggle's not drawing properly. Need to re-architect the Model
+           so that it is more flexible, and easier to work with.
+           Consider some design patterns, or change of responsibility
+           here.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 5 : oconn139
+NAME     : Squiggle is broken
+OWNER    : Patrick O'Connor
+PRIORITY : Medium
+ESTIMATE : 1 hour
+ISSUE    : Squiggles are connected to each other by a straight line. Each drag
+		   of the mouse should be a separate squiggle. Possibly
+           the issue is with the representation of the squiggles in the Model.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 6 : oconn139
+NAME     : Circle drawing is broken
+OWNER    : Patrick O'Connor
+PRIORITY : Low
+ESTIMATE : < 1 Hour
+ISSUE    : The first click should specify the center of the circle, with
+           a drag for the radius. This is not the case in the current
+           implementation.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 7 : tamrazpe
+NAME     : The program slows down significantly as the number of shapes increases
+OWNER    : Peter Tamraz 
+PRIORITY : Medium
+ESTIMATE : 2 Hours
+ISSUE    : Shapes that have already been drawn are continually redrawn each
+			time a change is made, as a result when the total amount of shapes
+			is large, the program lags when additional changes are made.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 8 : oconn139
 NAME     : Improve architecture of brushStrategies
 OWNER    : Patrick O'Connor
 PRIORITY : Medium
@@ -244,8 +253,13 @@ ISSUE    : Right now for a brush strategy to get color/fill/size info it is pass
 			only how it needs to modify it. Will fix this by constructing the brushStrategies factory 
 			style in the palette panel itself when the PaintPanel needs it too.
 --------------------------------------------------------------------------
-
-
-
+--------------------------------------------------------------------------
+TYPE     : BUG 9 : tamrazpe
+NAME     : Icons instead of text for sill style selection
+OWNER    : Peter Tamraz
+PRIORITY : Low
+ESTIMATE : 1 Hour
+ISSUE    : Would be nice to have icons instead of "Filled", "Outline", ...
+--------------------------------------------------------------------------
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 
