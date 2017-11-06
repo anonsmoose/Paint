@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
-import ca.utoronto.utm.paint.Point;
-
+/**
+ * An object representing a circle for the purposed of being
+ * drawn in a paint program.
+ *
+ */
 public class Circle implements Shape {
 	private Point centre;
 	private int radius;
@@ -16,6 +18,15 @@ public class Circle implements Shape {
 	private Color primaryColor;
 	private Color secondaryColor;
 	
+	/**
+	 * Constructs a new circle
+	 * @param centre the center of the circle
+	 * @param radius the radius of the circle
+	 * @param primaryColor the color used for drawing the circle.
+	 * @param secondaryColor the color used for filling the circle only if it has the appropriate fillstyle
+	 * @param brushSize the thickness of the circles outline
+	 * @param fillStyle whether the circle is filled with nothing,its primarycolor, or secondarycolor
+	 */
 	public Circle(Point centre, int radius,Color primaryColor,Color secondaryColor, int brushSize, String fillStyle){
 		this.fillStyle = fillStyle;
 		this.centre = centre;

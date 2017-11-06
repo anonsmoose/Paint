@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 import ca.utoronto.utm.paint.PaintModel;
-import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Point;
 import ca.utoronto.utm.paint.Shapes.Rectangle;
 import ca.utoronto.utm.paint.Shapes.Shape;
-
+/**
+ * A brush that creates a rectangle spanning from the point initially clicked to the point
+ * the mouse is released at.
+ *
+ */
 public class RectangleBrushStrategy extends ConcreteBrushStrategy{
 	private Rectangle rectangle;
 

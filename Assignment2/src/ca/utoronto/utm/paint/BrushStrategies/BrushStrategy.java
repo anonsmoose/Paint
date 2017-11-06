@@ -1,5 +1,8 @@
 package ca.utoronto.utm.paint.BrushStrategies;
-
+/**
+ * Interface used for implementing the strategy design pattern for
+ * the various brushes used in a paint program.
+ */
 import java.awt.event.MouseEvent;
 
 public interface BrushStrategy{

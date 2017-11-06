@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 import ca.utoronto.utm.paint.PaintModel;
-import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Circle;
+import ca.utoronto.utm.paint.Shapes.Point;
 import ca.utoronto.utm.paint.Shapes.Shape;
-
+/**
+ * A brush that when clicked and dragged, creates a circle from the origin
+ * point click to the position of the mouse.
+ *
+ */
 public class CircleBrushStrategy extends ConcreteBrushStrategy{
 	private Circle circle;
 

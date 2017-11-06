@@ -23,7 +23,13 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
+/**
+ * 
+ * This class is a panel for use in a paint program, it contains all controls for selecting
+ * and modifying the brush used in the program
+ * 
+ *
+ */
 public class PalletePanel extends JPanel implements ChangeListener, ActionListener {
 	private ConcreteBrushStrategy brushStrategy;
 	private PaintModel model;
@@ -39,8 +45,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private Color secondaryColor = Color.white;
 	private String fillStyle = "Outline";
 
-	private boolean isChanged;
-	
+	private boolean isChanged; // For paintpanel to check if it needs to get an updated version of the brush
 	private final Font font = new Font("Arial", Font.BOLD, 16);
 	private final Color textColor = new Color(255, 3, 118);
 	private JButton selectedBrushButton;
@@ -57,7 +62,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline"};
 		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png"};
 
-		
+		//Action Listener for choosing which brush to create when a button is selected.
 		ActionListener brushButtonListener = new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -88,6 +93,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 			}	
 		};
 		
+		//Action listener for choosing which fill type to update to on the current brush
 		ActionListener fillButtonListener = new ActionListener(){
 
 			@Override
@@ -265,7 +271,10 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.add(thicknessSlider, c);
 
 	}
-	
+	/**
+	 * Updates the current brush with the values currently selected on
+	 * the GUI controls.
+	 */
 	public void updateBrushStrategy(){
 		this.brushStrategy.setPrimaryColor(this.primaryColor);
 		this.brushStrategy.setSecondaryColor(this.secondaryColor);
@@ -275,12 +284,21 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.model.notifyBrushChanged();
 	}
 	
+	/**
+	 * Creates and updates the properties of a newly selected brush strategy.
+	 * @param brushStrategy The brushStrategy whose properties are being changed.
+	 */
 	public void createBrushStrategy(ConcreteBrushStrategy brushStrategy){
 		this.brushStrategy = brushStrategy;
 		this.isChanged = true;
 		this.updateBrushStrategy();
 	}
 	
+	/**
+	 * For use of the paintpanel to check if it needs to get a new brush strategy, resets the isChanged flag
+	 * if it does.
+	 * @return isChanged Whether or not the pallete panel has changed the brushStrategy it has created.
+	 */
 	public boolean toggleChanged(){
 		if(this.isChanged){
 			this.isChanged = false;
@@ -289,6 +307,11 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		return false;
 	}
 	
+	/**
+	 * Toggles a button off and resets the currently selected button
+	 * @param selectedButton the selected button
+	 * @param clickedButton the button being toggle
+	 */
 	public void toggleButton(JButton selectedButton, JButton clickedButton){
 		Border line = new LineBorder(Color.GREEN);
 		Border margin = new EmptyBorder(3, 7, 3, 7);
@@ -306,7 +329,10 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	public ConcreteBrushStrategy getBrushStrategy(){
 		return this.brushStrategy;
 	}
-	
+	/**
+	 * Makes cosmetic changes to a JButton. 
+	 * @param button The button being stylized.
+	 */
 	private static void styleButton(JButton button) {
 		button.setFocusPainted(false);
 		button.setFont(new Font("Arial", Font.BOLD, 12));

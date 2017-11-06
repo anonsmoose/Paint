@@ -11,33 +11,7 @@ import ca.utoronto.utm.paint.Shapes.Shape;
 public class PaintModel extends Observable {
 
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
-	private int brushSize =1;
-	private boolean solid;
-	private Color brushColor;
-	
-	public void setBrushSize(int size){
-		this.brushSize = size;
-	}
-	
-	public int getBrushSize(){
-		return this.brushSize;
-	}
-	
-	public void setSolid(boolean solid){
-		this.solid = solid;
-	}
-	
-	public boolean getSolid(){
-		return this.solid;
-	}
-	
-	public void setColor(Color c){
-		this.brushColor = c;
-	}
-	
-	public Color getColor(){
-		return this.brushColor;
-	}
+
 	public void addShape(Shape s){
 		if(!this.shapes.contains(s))
 			this.shapes.add(s);

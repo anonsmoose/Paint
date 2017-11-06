@@ -1,4 +1,4 @@
-package ca.utoronto.utm.paint;
+package ca.utoronto.utm.paint.Shapes;
 
 public class Point {
 	int x, y;

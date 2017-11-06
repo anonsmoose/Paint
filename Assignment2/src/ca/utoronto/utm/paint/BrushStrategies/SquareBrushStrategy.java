@@ -6,10 +6,14 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
 
 import ca.utoronto.utm.paint.PaintModel;
-import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Point;
 import ca.utoronto.utm.paint.Shapes.Rectangle;
 import ca.utoronto.utm.paint.Shapes.Square;
-
+/**
+ * A brush that creates the largest square that fits in the area between the point where the mouse is clicked
+ * to the point where the mouse is released.
+ *
+ */
 public class SquareBrushStrategy extends ConcreteBrushStrategy {
 	private Square square;
 

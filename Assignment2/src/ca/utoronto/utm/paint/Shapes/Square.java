@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
-import ca.utoronto.utm.paint.Point;
-
+/**
+ * An object representing a square for the purposes of being 
+ * drawn in a paint program.
+ *
+ */
 public class Square implements Shape {
 	private int ydiff;
 	private int xdiff;
@@ -18,10 +20,10 @@ public class Square implements Shape {
 	private String fillStyle;
 	
 	/**
-	 * Constructs a new rectangle.
+	 * Constructs a new square.
 	 * @param o Point corresponding to the origin of the rectangle.
-	 * @param height The height of the rectangle.
-	 * @param width The with of the rectangle.
+	 * @param ydiff the differance between the origin and the mouse pos
+	 * @param xdiff the differance between the origin and the mouse pos
 	 * @param color The color of the rectangle.
 	 * @param brushSize The thickness of the rectangle.
 	 * @param solid If the rectangle is filled or not. 

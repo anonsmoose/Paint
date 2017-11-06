@@ -3,15 +3,20 @@ package ca.utoronto.utm.paint.Shapes;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-
-import ca.utoronto.utm.paint.Point;
-
+/**
+ * An object representing a free form line for the purposes of being drawn in
+ * a paint program
+ *
+ */
 public class Squiggle implements Shape {
 	private ArrayList<Point> compositePoints;
 	private Color color;
 	private boolean drawn;
 	private int thickness;
 	
+	/**
+	 * Constructs a new squiggle object with no points.
+	 */
 	public Squiggle(){
 		compositePoints = new ArrayList<Point>();
 		this.drawn = false;
@@ -36,7 +41,7 @@ public class Squiggle implements Shape {
 	public ArrayList<Shape> explodeShape() {
 		ArrayList<Shape> compositeShapes = new ArrayList<Shape>();
 		int i = 0;
-		while(i+1 < compositePoints.size()){ //while there is enough elements to construct additional li
+		while(i+1 < compositePoints.size()){ //while there is enough elements to construct additional lines
 			int x1 = compositePoints.get(i).getX();
 			int y1 = compositePoints.get(i).getY();
 			int x2 = compositePoints.get(i+1).getX();

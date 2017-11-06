@@ -5,9 +5,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
-import ca.utoronto.utm.paint.Point;
-
+/**
+ * 
+ *
+ */
 public class Rectangle implements Shape{
 	private int height;
 	private int width;

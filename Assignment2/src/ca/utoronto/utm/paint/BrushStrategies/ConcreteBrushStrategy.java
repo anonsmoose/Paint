@@ -4,7 +4,11 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ca.utoronto.utm.paint.PaintModel;
-
+/**
+ * Abstract brush, defines the shared behaviour and attributes between
+ * all brush types
+ *
+ */
 public abstract class ConcreteBrushStrategy implements BrushStrategy{
 	protected Color primaryColor = Color.white;
 	protected Color secondaryColor = Color.white;

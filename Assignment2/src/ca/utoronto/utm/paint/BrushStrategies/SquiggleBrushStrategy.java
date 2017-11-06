@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 import ca.utoronto.utm.paint.PaintModel;
-import ca.utoronto.utm.paint.Point;
+import ca.utoronto.utm.paint.Shapes.Point;
 import ca.utoronto.utm.paint.Shapes.Shape;
 import ca.utoronto.utm.paint.Shapes.Squiggle;
-
+/**
+ * A brush for creating smooth free-form lines that follow the path of the mouse
+ * from the point it is clicked to the point it is released.
+ *
+ */
 public class SquiggleBrushStrategy extends ConcreteBrushStrategy {
 	private Squiggle squiggle;
 	

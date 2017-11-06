@@ -6,9 +6,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
 
 import ca.utoronto.utm.paint.PaintModel;
-import ca.utoronto.utm.paint.Point;
 import ca.utoronto.utm.paint.Shapes.Line;
-
+import ca.utoronto.utm.paint.Shapes.Point;
+/**
+ * A brush that creates a line from a point clicked to the point where the mouse is release
+ * from which it creates successive lines from the previouse end point of the last line.
+ *
+ */
 public class PolylineBrushStrategy extends ConcreteBrushStrategy {
 	private Point origin;
 	private Point destination;
