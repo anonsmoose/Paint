@@ -20,7 +20,7 @@ SO THAT  : I can add circles to my canvas
 # Sprint 2 October 30, 2017
 # Sprint 2 Backlog UserStories go below
 --------------------------------------------------------------------------
-TYPE     : USER STORY 2
+TYPE     : USER STORY 2 : tamrazpe
 NAME     : Draw Circle Feedback
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -35,7 +35,7 @@ SO THAT  : I can see the circle I am about to build on release of the mouse
            button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 3
+TYPE     : USER STORY 3 : tamrazpe
 NAME     : Draw Rectangle
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -46,7 +46,7 @@ I WANT   : To click on one corner of a rectangle, drag, and release to
 SO THAT  : I can add rectangles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 4
+TYPE     : USER STORY 4 : tamrazpe
 NAME     : Draw Rectangle Feedback
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -56,9 +56,9 @@ I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid const
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 3
+TYPE     : BUG 3 : oconn139
 NAME     : Architecture behind choosing selection mode is poor
-OWNER    : Patrick O'Connor
+OWNER    : Patrick O'Connor 
 PRIORITY : High
 ESTIMATE : 2 Hours
 ISSUE    : Code is not modular and is difficult to expand. Need a better
@@ -68,7 +68,7 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
            'if' blocks in the PaintPanel mouse event code.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 4
+TYPE     : BUG 4 : oconn139
 NAME     : Architecture behind Model is poor
 OWNER    : Patrick O'Connor
 PRIORITY : High
@@ -85,9 +85,9 @@ ISSUE    : Having a list of different types of drawable things in the
 # Sprint 3 November 1, 2017
 # Sprint 3 Backlog UserStories go below
 --------------------------------------------------------------------------
-TYPE     : BUG 5
+TYPE     : BUG 5 : oconn139
 NAME     : Squiggle is broken
-OWNER    : Patrick O'Connor
+OWNER    : Patrick O'Connor 
 PRIORITY : Medium
 ESTIMATE : 1 hour
 ISSUE    : Squiggles are connected to each other by a straight line. Each drag
@@ -95,7 +95,7 @@ ISSUE    : Squiggles are connected to each other by a straight line. Each drag
            the issue is with the representation of the squiggles in the Model.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 6
+TYPE     : BUG 6 : oconn139
 NAME     : Circle drawing is broken
 OWNER    : Patrick O'Connor
 PRIORITY : Low
@@ -105,9 +105,9 @@ ISSUE    : The first click should specify the center of the circle, with
            implementation.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 7
+TYPE     : USER STORY 7 : oconn139
 NAME     : Line thickness selector
-OWNER    : Patrick O'Connor
+OWNER    : Patrick O'Connor 
 PRIORITY : Medium
 ESTIMATE : 2 Hours
 AS A     : user
@@ -131,7 +131,7 @@ SO THAT  :
 --------------------------------------------------------------------------
 
 --------------------------------------------------------------------------
-TYPE     : BUG 7
+TYPE     : BUG 7 : tamrazpe
 NAME     : The program slows down significantly as the number of shapes increases
 OWNER    : Peter Tamraz 
 PRIORITY : Medium
@@ -141,7 +141,7 @@ ISSUE    : Shapes that have already been drawn are continually redrawn each
 			is large, the program lags when additional changes are made.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 5
+TYPE     : USER STORY 5 : tamrazpe
 NAME     : Color selector
 OWNER    : Peter Tamraz
 PRIORITY : High
@@ -169,7 +169,7 @@ SO THAT  :
 # Sprint 4 November 3, 2017
 # Sprint 4 Backlog UserStories go below
 --------------------------------------------------------------------------
-TYPE     : USER STORY 6
+TYPE     : USER STORY 6 : tamrazpe
 NAME     : Fill style selector
 OWNER    : Peter Tamraz
 PRIORITY : Medium
@@ -193,7 +193,7 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG 2
+TYPE     : BUG 2 : tamrazpe
 NAME     : Drawing selection mode not indicated
 OWNER    : Peter Tamraz
 PRIORITY : Low
@@ -210,35 +210,69 @@ PRIORITY : Low
 ESTIMATE : 1 Hour
 ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
+
+# Sprint 5 November 4-5, 2017
+# Sprint 5 Backlog UserStories go below
 --------------------------------------------------------------------------
-TYPE     : USER STORY 8
+TYPE     : USER STORY 8 : oconn139
 NAME     : Draw Square
-OWNER    : 
+OWNER    : Patrick O'Connor
 PRIORITY : Medium
 ESTIMATE : 2 hours
 AS A     : user
 I WANT   : To click on one corner of a square, drag, and release to 
 		   specify two corners of a square to be drawn in the current style.
-SO THAT  : I can add rectangles to my canvas
+SO THAT  : I can add squares to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 9
-NAME     : Draw Square Feedback
-OWNER    : 
-PRIORITY : Medium
+TYPE     : USER STORY 9 : tamrazpe
+NAME     : Improve GUI
+OWNER    : Peter Tamraz
+PRIORITY : Low
 ESTIMATE : 2 hours
 AS A     : user
-I WANT   : Similarly to Draw Circle Feedback, display the square in mid construction.
-SO THAT  : I can see the square I am about to build on release of the mouse button.
+I WANT   : An improved GUI
+SO THAT  : I 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 10
+TYPE     : USER STORY 10 : oconn139
 NAME     : Draw Polyline
-OWNER    : 
+OWNER    : Patrick O'Connor
 PRIORITY : Medium
-ESTIMATE : 2 hours
+ESTIMATE : 1 hour
 AS A     : user
 I WANT   : To create a composition of line segments.
 SO THAT  : I can add polylines to my canvas
 --------------------------------------------------------------------------
-
+--------------------------------------------------------------------------
+TYPE     : USER STORY 11 : oconn139
+NAME     : Add Secondary Color
+OWNER    : Patrick O'Connor
+PRIORITY : Medium
+ESTIMATE : 1 hour
+AS A     : user
+I WANT   : To be able to select a second color in the same way as User Story 5,
+			to be used interchangebly with my first color by clicking the right
+			mouse button instead of the left.
+SO THAT  : Use multiple colors at once.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 8 : oconn139
+NAME     : Improve architecture of brushStrategies
+OWNER    : Patrick O'Connor
+PRIORITY : Medium
+ESTIMATE : 2 Hours
+ISSUE    : Right now for a brush strategy to get color/fill/size info it is passed
+			the PaintModel in its constructor which it then uses to access the palette panel. This isn't
+			great because a brushStrategy shouldn't need to know about the details of model to exist, 
+			only how it needs to modify it. Will fix this by constructing the brushStrategies factory 
+			style in the palette panel itself when the PaintPanel needs it too.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 9 : tamrazpe
+NAME     : Icons instead of text for sill style selection
+OWNER    : Peter Tamraz
+PRIORITY : Low
+ESTIMATE : 1 Hour
+ISSUE    : Would be nice to have icons instead of "Filled", "Outline", ...
+--------------------------------------------------------------------------
