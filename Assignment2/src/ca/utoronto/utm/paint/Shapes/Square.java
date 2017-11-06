@@ -12,9 +12,10 @@ public class Square implements Shape {
 	private int ydiff;
 	private int xdiff;
 	private int brushSize;
-	private Color color;
+	private Color primaryColor;
+	private Color secondaryColor;
 	private Point origin;
-	private boolean solid;
+	private String fillStyle;
 	
 	/**
 	 * Constructs a new rectangle.
@@ -25,13 +26,14 @@ public class Square implements Shape {
 	 * @param brushSize The thickness of the rectangle.
 	 * @param solid If the rectangle is filled or not. 
 	 */
-	public Square(Point o, int ydiff, int xdiff,Color color,int brushSize, boolean solid)
+	public Square(Point o, int ydiff, int xdiff,Color primaryColor,Color secondaryColor,int brushSize, String fillStyle)
 	{
-		this.solid = solid;
+		this.fillStyle = fillStyle;
 		this.xdiff = ydiff;
 		this.origin = o;
 		this.ydiff = ydiff;
-		this.color = color;
+		this.primaryColor = primaryColor;
+		this.secondaryColor = secondaryColor;
 		this.brushSize = brushSize;
 	}
 	
@@ -63,45 +65,26 @@ public class Square implements Shape {
 	public void drawShape(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
 		
-		g2d.setColor(this.color);
-		if(this.color == null){
-			g2d.setColor(Color.white);
-		}
-		
+		g2d.setColor(this.primaryColor);
 		g2d.setStroke(new BasicStroke(this.brushSize));
+		
 		int x = getOrigin().getX();
 		int y= getOrigin().getY();
 		int length = Math.max(Math.abs(this.ydiff),Math.abs(this.xdiff));
-		if(this.ydiff  > 0 && this.xdiff > 0)
-		{
-			g2d.drawRect(x - length, y - length, length, length);
-			if(this.solid)
-			{
-				g2d.fillRect(x - length, y - length, length, length);
-			}
-		}
-		else if(ydiff > 0 && xdiff < 0)
-		{
-			g2d.drawRect(x, y - length, length, length);
-			if(this.solid)
-			{
-				g2d.fillRect(x, y - length, length, length);
-			}
-		}
-		else if(ydiff < 0 && xdiff > 0)
-		{
-			g2d.drawRect(x - length, y, length, length);
-			if(this.solid)
-			{
-				g2d.fillRect(x - length, y, length, length);
-			}
-		}
-		else {
-			g2d.drawRect(Math.abs(x), Math.abs(y), length, length);
-			if(this.solid)
-			{
-				g2d.fillRect(Math.abs(x), Math.abs(y), length, length);
-			}
+		
+		if(this.ydiff  > 0)
+			y = y - length;
+		
+		if(this.xdiff > 0)
+			x = x - length;
+		
+		g2d.drawRect(x, y, length, length);
+		
+		if(this.fillStyle.equals("Solid"))
+			g2d.fillRect(x, y, length, length);
+		else if(this.fillStyle.equals("Secondary Filled")){
+			g2d.setColor(secondaryColor);
+			g2d.fillRect(x, y, length, length);
 		}
 
 	}

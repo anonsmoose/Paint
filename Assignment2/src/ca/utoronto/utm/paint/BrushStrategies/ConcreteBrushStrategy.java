@@ -9,7 +9,7 @@ public abstract class ConcreteBrushStrategy implements BrushStrategy{
 	protected Color primaryColor = Color.white;
 	protected Color secondaryColor = Color.white;
 	protected int brushSize = 1;
-	protected boolean isFilled = false;
+	protected String fillStyle = "Outline";
 	protected PaintModel model;
 	
 	public void setPrimaryColor(Color color){
@@ -36,12 +36,12 @@ public abstract class ConcreteBrushStrategy implements BrushStrategy{
 		return this.brushSize;
 	}
 	
-	public void setFilled(boolean isFilled){
-		this.isFilled = isFilled;
+	public void setFillStyle(String fillStyle){
+		this.fillStyle = fillStyle;
 	}
 	
-	public boolean getIsFilled(){
-		return this.isFilled;
+	public String getFillStyle(){
+		return this.fillStyle;
 	}
 	
 }

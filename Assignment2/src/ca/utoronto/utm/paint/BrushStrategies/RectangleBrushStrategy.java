@@ -29,10 +29,13 @@ public class RectangleBrushStrategy extends ConcreteBrushStrategy{
 		Point origin = new Point(e.getX(), e.getY());
 		int width = 0;
 		int height = 0;
-		Color color = this.primaryColor;
-		if(SwingUtilities.isRightMouseButton(e))
-			color = this.secondaryColor;
-		this.rectangle = new Rectangle(origin, width, height, color, this.brushSize, this.isFilled);
+		Color color1 = this.primaryColor;
+		Color color2 = this.secondaryColor;
+		if(SwingUtilities.isRightMouseButton(e)){
+			color1 = this.secondaryColor;
+			color2 = this.primaryColor;
+		}
+		this.rectangle = new Rectangle(origin, width, height, color1, color2, this.brushSize, this.fillStyle);
 		this.model.addShape(this.rectangle);
 	}
 

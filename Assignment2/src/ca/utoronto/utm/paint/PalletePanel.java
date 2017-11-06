@@ -38,7 +38,8 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private int brushSize = 1;
 	private Color primaryColor = Color.white;
 	private Color secondaryColor = Color.white;
-	private boolean isFilled = false;
+	private String fillStyle = "Outline";
+
 	private boolean isChanged;
 	
 	private final Font font = new Font("Arial", Font.BOLD, 16);
@@ -93,9 +94,13 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JButton jb = (JButton) e.getSource();
-				if(jb.getText() == "Solid") 
-					isFilled = true;
-				else isFilled = false;
+				
+				if(jb.getActionCommand() == "Solid") 
+					fillStyle = "Solid";
+				else if(jb.getActionCommand() == "Secondary Filled")
+					fillStyle = "Secondary Filled";
+				else fillStyle = "Outline";
+	
 				updateBrushStrategy();
 				model.notifyBrushChanged();
 				toggleButton(selectedFillButton,jb);
@@ -199,6 +204,18 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		outLineButton.addActionListener(fillButtonListener);
 		this.add(outLineButton,c);
 		
+		//Secondary Fill Button
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2;
+		c.gridx =  8;
+		c.gridy = 1;
+		c.insets = new Insets(0,0,0,20);
+		JButton secondaryFillButton = new JButton("Secondary Filled");
+		styleButton(secondaryFillButton);
+		secondaryFillButton.addActionListener(fillButtonListener);
+		this.add(secondaryFillButton,c);
+		
 		//Primary Color Button
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -252,7 +269,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.brushStrategy.setPrimaryColor(this.primaryColor);
 		this.brushStrategy.setSecondaryColor(this.secondaryColor);
 		this.brushStrategy.setBrushSize(this.brushSize);
-		this.brushStrategy.setFilled(this.isFilled);
+		this.brushStrategy.setFillStyle(this.fillStyle);
 		this.isChanged = true;
 		this.model.notifyBrushChanged();
 	}
@@ -310,6 +327,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.primaryColor = c;
 	}
 
+	// Thickness slider listener
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		this.brushSize = ((JSlider) e.getSource()).getValue();
@@ -317,7 +335,8 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.updateBrushStrategy();
 		thicknessLabel.setText("Brush Size: " + this.brushSize);
 	}
-
+	
+	// Color picker Listener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton jb = (JButton) e.getSource();

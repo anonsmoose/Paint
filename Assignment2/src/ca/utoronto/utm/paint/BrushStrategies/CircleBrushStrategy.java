@@ -27,10 +27,13 @@ public class CircleBrushStrategy extends ConcreteBrushStrategy{
 	public void mousePressed(MouseEvent e) {
 		Point centre = new Point(e.getX(), e.getY());
 		int radius = 0;
-		Color color = this.primaryColor;
-		if(SwingUtilities.isRightMouseButton(e))
-			color = this.secondaryColor;
-		this.circle=new Circle(centre, radius,color,this.brushSize, this.isFilled);
+		Color color1 = this.primaryColor;
+		Color color2 = this.secondaryColor;
+		if(SwingUtilities.isRightMouseButton(e)){
+			color1 = this.secondaryColor;
+			color2 = this.primaryColor;
+		}
+		this.circle=new Circle(centre, radius,color1,color2,this.brushSize, this.fillStyle);
 		this.model.addShape(this.circle);
 	}
 
