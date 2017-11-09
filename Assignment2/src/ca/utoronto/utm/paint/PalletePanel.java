@@ -59,8 +59,6 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.brushStrategy = new CircleBrushStrategy(this.model);
 		this.setBackground(Color.DARK_GRAY);
 		
-		BrushStrategyFactory brushFactory = new BrushStrategyFactory(this,this.model);
-		
 		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline"};
 		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png"};
 
@@ -87,6 +85,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		// GUI CONFIGURATION BELOW
 		
 		//Brush buttons
+		BrushStrategyFactory brushFactory = new BrushStrategyFactory(this,this.model);
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
