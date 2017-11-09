@@ -15,7 +15,7 @@ import ca.utoronto.utm.paint.Shapes.Shape;
  * point click to the position of the mouse.
  *
  */
-public class CircleBrushStrategy extends ConcreteBrushStrategy{
+public class CircleBrushStrategy extends BrushStrategy{
 	private Circle circle;
 
 	public CircleBrushStrategy(PaintModel model){

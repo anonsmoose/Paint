@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import ca.utoronto.utm.paint.BrushStrategies.BrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.CircleBrushStrategy;
-import ca.utoronto.utm.paint.BrushStrategies.ConcreteBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.PolylineBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.RectangleBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.SquareBrushStrategy;
@@ -31,8 +31,9 @@ import javax.swing.border.LineBorder;
  *
  */
 public class PalletePanel extends JPanel implements ChangeListener, ActionListener {
-	private ConcreteBrushStrategy brushStrategy;
+	private BrushStrategy brushStrategy;
 	private PaintModel model;
+	private View view;
 	
 	private JSlider thicknessSlider;
 	private JLabel thicknessLabel;
@@ -51,47 +52,18 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	private JButton selectedBrushButton;
 	private JButton selectedFillButton;
 	
-	public PalletePanel(PaintModel model) {
+	public PalletePanel(PaintModel model, View view) {
 		this.setLayout(new GridBagLayout());
-
 		this.model = model;
+		this.view = view;
 		this.brushStrategy = new CircleBrushStrategy(this.model);
-		
 		this.setBackground(Color.DARK_GRAY);
+		
+		BrushStrategyFactory brushFactory = new BrushStrategyFactory(this,this.model);
 		
 		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline"};
 		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png"};
 
-		//Action Listener for choosing which brush to create when a button is selected.
-		ActionListener brushButtonListener = new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				switch(e.getActionCommand()){
-				case "Circle":
-					createBrushStrategy(new CircleBrushStrategy(model));
-					break;
-					
-				case "Squiggle":
-					createBrushStrategy(new SquiggleBrushStrategy(model));
-					break;
-					
-				case "Rectangle":
-					createBrushStrategy(new RectangleBrushStrategy(model));
-					break;
-					
-				case "Polyline":
-					createBrushStrategy(new PolylineBrushStrategy(model));
-					break;
-					
-				case "Square":
-					createBrushStrategy(new SquareBrushStrategy(model));
-					break;
-				}
-				JButton button = (JButton)e.getSource();
-				toggleButton(selectedBrushButton, button);
-				selectedBrushButton = button;
-			}	
-		};
 		
 		//Action listener for choosing which fill type to update to on the current brush
 		ActionListener fillButtonListener = new ActionListener(){
@@ -107,7 +79,6 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 				else fillStyle = "Outline";
 	
 				updateBrushStrategy();
-				model.notifyBrushChanged();
 				toggleButton(selectedFillButton,jb);
 				selectedFillButton = jb;
 			}	
@@ -128,7 +99,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 			if(i==4)
 				c.insets = new Insets(0,0,0,20);
 			this.add(button,c);
-			button.addActionListener(brushButtonListener);
+			button.addActionListener(brushFactory);
 			if(i == 0){
 				this.toggleButton(this.selectedBrushButton,button);
 				this.selectedBrushButton = button;
@@ -280,18 +251,17 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.brushStrategy.setSecondaryColor(this.secondaryColor);
 		this.brushStrategy.setBrushSize(this.brushSize);
 		this.brushStrategy.setFillStyle(this.fillStyle);
-		this.isChanged = true;
-		this.model.notifyBrushChanged();
+		this.view.getPaintPanel().updateBrushStrategy(this.brushStrategy);
 	}
 	
 	/**
 	 * Creates and updates the properties of a newly selected brush strategy.
 	 * @param brushStrategy The brushStrategy whose properties are being changed.
 	 */
-	public void createBrushStrategy(ConcreteBrushStrategy brushStrategy){
+	public void setBrushStrategy(BrushStrategy brushStrategy){
 		this.brushStrategy = brushStrategy;
-		this.isChanged = true;
 		this.updateBrushStrategy();
+		// set brush strat of paint panel;
 	}
 	
 	/**
@@ -326,7 +296,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		clickedButton.setEnabled(false);
 	}
 	
-	public ConcreteBrushStrategy getBrushStrategy(){
+	public BrushStrategy getBrushStrategy(){
 		return this.brushStrategy;
 	}
 	/**
@@ -352,6 +322,14 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 
 	public void setColor(Color c) {
 		this.primaryColor = c;
+	}
+	
+	public JButton getSelectedBrushButton(){
+		return this.selectedBrushButton;
+	}
+	
+	public void setSelectedBrushButton(JButton button){
+		this.selectedBrushButton = button;
 	}
 
 	// Thickness slider listener

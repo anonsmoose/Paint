@@ -15,7 +15,7 @@ import ca.utoronto.utm.paint.Shapes.Squiggle;
  * from the point it is clicked to the point it is released.
  *
  */
-public class SquiggleBrushStrategy extends ConcreteBrushStrategy {
+public class SquiggleBrushStrategy extends BrushStrategy {
 	private Squiggle squiggle;
 	
 	public SquiggleBrushStrategy(PaintModel model){

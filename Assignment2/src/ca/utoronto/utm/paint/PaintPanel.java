@@ -66,11 +66,11 @@ class PaintPanel extends JPanel implements Observer, MouseMotionListener, MouseL
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// Not exactly how MVC works, but similar.
 		this.repaint(); // Schedule a call to paintComponent
-		if(this.view.getPalletePanel().toggleChanged()){
-			this.brushStrategy = this.view.getPalletePanel().getBrushStrategy();
-		}
+	}
+	
+	public void updateBrushStrategy(BrushStrategy brushStrategy){
+		this.brushStrategy = brushStrategy;
 	}
 	
 	/**

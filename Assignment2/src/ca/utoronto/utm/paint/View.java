@@ -39,7 +39,7 @@ public class View extends JFrame implements ActionListener {
 		this.paintPanel = new PaintPanel(model, this);
 		c.add(this.paintPanel, BorderLayout.CENTER);
 		
-		this.palletePanel = new PalletePanel(this.model);
+		this.palletePanel = new PalletePanel(this.model, this);
 		c.add(this.palletePanel,BorderLayout.NORTH);
 		
 		this.pack();

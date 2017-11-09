@@ -1,33 +1,53 @@
 package ca.utoronto.utm.paint.BrushStrategies;
-/**
- * Interface used for implementing the strategy design pattern for
- * the various brushes used in a paint program.
- */
+
+import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public interface BrushStrategy{
-
-	public void mouseClicked(MouseEvent e);
+import ca.utoronto.utm.paint.PaintModel;
+/**
+ * Abstract brush, defines the shared behaviour and attributes between
+ * all brush types
+ *
+ */
+public abstract class BrushStrategy implements MouseListener, MouseMotionListener{
+	protected Color primaryColor = Color.white;
+	protected Color secondaryColor = Color.white;
+	protected int brushSize = 1;
+	protected String fillStyle = "Outline";
+	protected PaintModel model;
 	
-
-	public void mousePressed(MouseEvent e);
+	public void setPrimaryColor(Color color){
+		this.primaryColor = color;
+	}
 	
-
-	public void mouseReleased(MouseEvent e);
+	public Color getPrimaryColor(){
+		return this.primaryColor;
+	}
 	
-
-	public void mouseEntered(MouseEvent e);
+	public void setSecondaryColor(Color color){
+		this.secondaryColor = color;
+	}
 	
-
-	public void mouseExited(MouseEvent e);
+	public Color getSecondaryColor(){
+		return this.secondaryColor;
+	}
 	
+	public void setBrushSize(int brushSize){
+		this.brushSize = brushSize;
+	}
 	
-	public void mouseMoved(MouseEvent e);
+	public int getBrushSize(){
+		return this.brushSize;
+	}
 	
+	public void setFillStyle(String fillStyle){
+		this.fillStyle = fillStyle;
+	}
 	
-	public void mouseDragged(MouseEvent e);
-	
-	
-	
+	public String getFillStyle(){
+		return this.fillStyle;
+	}
 	
 }

@@ -13,7 +13,7 @@ import ca.utoronto.utm.paint.Shapes.Point;
  * from which it creates successive lines from the previouse end point of the last line.
  *
  */
-public class PolylineBrushStrategy extends ConcreteBrushStrategy {
+public class PolylineBrushStrategy extends BrushStrategy {
 	private Point origin;
 	private Point destination;
 	private Line line;

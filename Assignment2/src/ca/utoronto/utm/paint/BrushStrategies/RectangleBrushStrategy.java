@@ -15,7 +15,7 @@ import ca.utoronto.utm.paint.Shapes.Shape;
  * the mouse is released at.
  *
  */
-public class RectangleBrushStrategy extends ConcreteBrushStrategy{
+public class RectangleBrushStrategy extends BrushStrategy{
 	private Rectangle rectangle;
 
 	public RectangleBrushStrategy(PaintModel model){

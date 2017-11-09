@@ -14,7 +14,7 @@ import ca.utoronto.utm.paint.Shapes.Square;
  * to the point where the mouse is released.
  *
  */
-public class SquareBrushStrategy extends ConcreteBrushStrategy {
+public class SquareBrushStrategy extends BrushStrategy {
 	private Square square;
 
 	public SquareBrushStrategy(PaintModel model){
