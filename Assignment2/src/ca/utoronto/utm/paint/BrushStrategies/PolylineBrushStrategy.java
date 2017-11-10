@@ -67,6 +67,7 @@ public class PolylineBrushStrategy extends BrushStrategy {
 	public void mouseDragged(MouseEvent e) {
 		destination = new Point(e.getX(),e.getY());
 		this.line.setDestination(destination);
+		this.model.notifyBrushChanged();
 
 	}
 
