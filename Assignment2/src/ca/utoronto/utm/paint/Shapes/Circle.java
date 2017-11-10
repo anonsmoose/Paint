@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * drawn in a paint program.
  *
  */
-public class Circle implements Shape {
+public class Circle implements Shape{
 	private Point centre;
 	private int radius;
 	private int brushSize;
@@ -63,23 +63,16 @@ public class Circle implements Shape {
 		g2d.setColor(this.primaryColor);
 		g2d.setStroke(new BasicStroke(this.brushSize));
 		
-		if(this.radius > 0){
-			g2d.drawOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
-			if(this.fillStyle.equals("Solid"))
-				g2d.fillOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
-			else if(this.fillStyle.equals("Secondary Filled")){
-				g2d.setColor(secondaryColor);
-				g2d.fillOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
-			}
+		if(this.radius < 0){
+			radius = -1* radius;
 		}
-		else {
-			g2d.drawOval(this.centre.getX() + radius, this.centre.getY() + radius, -radius*2, -radius*2);
-			if(this.fillStyle.equals("Solid"))
-				g2d.fillOval(this.centre.getX() + radius, this.centre.getY() + radius, -radius*2, -radius*2);
-			else if(this.fillStyle.equals("Secondary Filled")){
-				g2d.setColor(secondaryColor);
-				g2d.fillOval(this.centre.getX() + radius, this.centre.getY() + radius, -radius*2, -radius*2);
-			}
+		
+		g2d.drawOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
+		if(this.fillStyle.equals("Solid"))
+			g2d.fillOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
+		else if(this.fillStyle.equals("Secondary Filled")){
+			g2d.setColor(secondaryColor);
+			g2d.fillOval(this.centre.getX() - radius, this.centre.getY() - radius, radius*2, radius*2);
 		}
 	}
 
@@ -87,6 +80,6 @@ public class Circle implements Shape {
 	public ArrayList<Shape> explodeShape() {
 		ArrayList<Shape> compositeShapes = new ArrayList<Shape>();
 		compositeShapes.add(this);
-		return null;
+		return compositeShapes;
 	}
 }
