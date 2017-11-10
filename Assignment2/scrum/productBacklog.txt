@@ -19,35 +19,7 @@ DrawingCommands appear on PaintPanel's list right along side
 the Shape type DrawingCommands.
 --------------------------------------------------------------------------
 
---------------------------------------------------------------------------
-TYPE     : BUG 2.4 : UTORID
-NAME     : Architecture behind creating shape instances is poor
-OWNER    : 
-PRIORITY :
-ESTIMATE : 
-ISSUE    : A better architecture for creating shape instances so that it is 
-more flexible, and easier to work with can be created using the Strategy Design 
-pattern as follows:
 
-Create class/abstract class/interface  ShapeManipulatorStrategy as well 
-as subclasses/implementators for each type of Shape. Call these the
-concrete ShapeNamipulatorStrategies
-
-The concrete ShapeManipulatorStrategies are responsible for 
-
-1. Creating instances of Shape and putting them on top of 
-   the PaintModel command stack.
-
-2. Understanding how mouse events modify the shape at the top of the 
-   PaintModel command stack.
-
-3. Calling the PaintPanel repaint at appropriate times.
-
-This strategy can be put in place either by having PaintPanel's mouse 
-events forwarded through PaintPanel into the current strategy, or by 
-simply switching the PaintPanel's listeners as appropriate.
-
---------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
@@ -371,6 +343,35 @@ ShapeManipulatorStrategy is created and installed in the PaintPanel.
 Note that you can associate text with a button, even if you 
 display an ImageIcon. The string attached to the button causes the right choice 
 of object creation.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG 2.4 : oconn139
+NAME     : Architecture behind creating shape instances is poor
+OWNER    : Patrick O'Connor
+PRIORITY : High
+ESTIMATE : 1 hour (Already implemented from part 1 just needs cleanup)
+ISSUE    : A better architecture for creating shape instances so that it is 
+more flexible, and easier to work with can be created using the Strategy Design 
+pattern as follows:
+
+Create class/abstract class/interface  ShapeManipulatorStrategy as well 
+as subclasses/implementators for each type of Shape. Call these the
+concrete ShapeNamipulatorStrategies
+
+The concrete ShapeManipulatorStrategies are responsible for 
+
+1. Creating instances of Shape and putting them on top of 
+   the PaintModel command stack.
+
+2. Understanding how mouse events modify the shape at the top of the 
+   PaintModel command stack.
+
+3. Calling the PaintPanel repaint at appropriate times.
+
+This strategy can be put in place either by having PaintPanel's mouse 
+events forwarded through PaintPanel into the current strategy, or by 
+simply switching the PaintPanel's listeners as appropriate.
+
 --------------------------------------------------------------------------
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 
