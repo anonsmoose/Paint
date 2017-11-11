@@ -118,6 +118,14 @@ public class View extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+		JMenuItem jmi = (JMenuItem) e.getSource();
+		if(jmi.getActionCommand() == "Undo")
+		{
+			this.model.undo();
+		}
+		else if(jmi.getActionCommand() == "Redo")
+		{
+			this.model.redo();
+		}
 	}
 }

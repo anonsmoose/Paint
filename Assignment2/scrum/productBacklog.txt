@@ -373,5 +373,16 @@ events forwarded through PaintPanel into the current strategy, or by
 simply switching the PaintPanel's listeners as appropriate.
 
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 12 : tamrazpe
+NAME     : Undo/Redo
+OWNER    : Peter Tamraz
+PRIORITY : Medium
+ESTIMATE : 2 hours
+AS A     : user
+I WANT   : use the menu to undo or redo shapes that I have created.
+SO THAT  : Get rid of mistakes or get back creations that were originally
+correct.
+--------------------------------------------------------------------------
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 
