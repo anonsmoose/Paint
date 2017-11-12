@@ -59,8 +59,8 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		this.brushStrategy = new CircleBrushStrategy(this.model);
 		this.setBackground(Color.DARK_GRAY);
 		
-		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline"};
-		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png"};
+		String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Eraser"};
+		String[] icons = {"/circle1.png", "/rectangle1.png", "/square1.png", "/pencil1.png", "/polyline1.png", "/eraser1.png"};
 
 		
 		//Action listener for choosing which fill type to update to on the current brush
@@ -91,11 +91,11 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c.weightx = 2;
 		c.gridx = 0;
 		c.gridy = 1;
-		for(int i = 0; i < icons.length; i++) {
-			JButton button = new JButton(new ImageIcon("images\\" + icons[i]));
+		for(int i = 0; i < icons.length ; i++) {
+			JButton button = new JButton(new ImageIcon("images//" + icons[i]));
 			button.setActionCommand(buttonLabels[i]);
 			styleButton(button);
-			if(i==4)
+			if(i==5)
 				c.insets = new Insets(0,0,0,20);
 			this.add(button,c);
 			button.addActionListener(brushFactory);
@@ -110,7 +110,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx = 0;
+		c.gridx = 1;
 		c.gridy = 0;
 		c.ipady = 8;
 		c.gridwidth = 5;
@@ -123,7 +123,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx = 5;
+		c.gridx = 6;
 		c.gridy = 0;
 		thicknessLabel = new JLabel("Brush Size 1");
 		this.thicknessLabel = new JLabel("Brush Size: 1 ");
@@ -135,7 +135,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx = 6;
+		c.gridx = 7;
 		c.gridy = 0;
 		JLabel fillLabel = new JLabel("Fill Type: ");
 		fillLabel.setFont(this.font);
@@ -146,7 +146,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx = 10;
+		c.gridx = 11;
 		c.gridwidth = 2;
 		c.insets = new Insets(0,0,0,20);
 		JLabel colorLabel = new JLabel("Click to pick a Color");
@@ -158,7 +158,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx = 6;
+		c.gridx = 7;
 		c.gridy = 1;
 		JButton solidButton = new JButton(new ImageIcon("images///square1BlueFill.png"));
 		solidButton.setActionCommand("Solid");
@@ -170,7 +170,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx =  7;
+		c.gridx =  8;
 		c.gridy = 1;
 		JButton outLineButton = new JButton(new ImageIcon("images///square1BlueOutline5.png"));
 		outLineButton.setActionCommand("Outline");
@@ -184,7 +184,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx =  8;
+		c.gridx =  9;
 		c.gridy = 1;
 		c.insets = new Insets(0,0,0,20);
 		JButton secondaryFillButton = new JButton(new ImageIcon("images///square1BlueOutline3.png"));
@@ -197,7 +197,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx = 10;
+		c.gridx = 11;
 		c.gridy = 1;
 		c.ipady = 32;
 		c.ipadx = 32;
@@ -213,7 +213,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 2;
-		c.gridx = 11;
+		c.gridx = 12;
 		c.gridy = 1;
 		c.ipady = 32;
 		c.ipadx = 32;
@@ -229,7 +229,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
-		c.gridx = 5;
+		c.gridx = 6;
 		c.gridy = 1;
 		c.insets = new Insets(0,0,0,20);
 		thicknessSlider = new JSlider(1, 10, 1);

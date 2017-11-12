@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 import ca.utoronto.utm.paint.BrushStrategies.BrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.CircleBrushStrategy;
+import ca.utoronto.utm.paint.BrushStrategies.EraserBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.PolylineBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.RectangleBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.SquareBrushStrategy;
@@ -43,6 +44,9 @@ public class BrushStrategyFactory implements ActionListener{
 			
 		case "Square":
 			this.brushStrategy = new SquareBrushStrategy(model);
+			break;
+		case "Eraser":
+			this.brushStrategy = new EraserBrushStrategy(model);
 			break;
 		}
 		JButton button = (JButton)e.getSource();

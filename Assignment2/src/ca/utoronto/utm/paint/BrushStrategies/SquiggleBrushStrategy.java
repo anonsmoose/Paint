@@ -16,7 +16,7 @@ import ca.utoronto.utm.paint.Shapes.Squiggle;
  *
  */
 public class SquiggleBrushStrategy extends BrushStrategy {
-	private Squiggle squiggle;
+	protected Squiggle squiggle;
 	
 	public SquiggleBrushStrategy(PaintModel model){
 		this.model = model;
