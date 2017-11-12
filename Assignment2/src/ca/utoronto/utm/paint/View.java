@@ -20,6 +20,7 @@ public class View extends JFrame implements ActionListener {
 	private PaintPanel paintPanel;
 	private ShapeChooserPanel shapeChooserPanel;
 	private PalletePanel palletePanel;
+	private PaintTogetherPanel paintTogetherPanel;
 	
 	public View(PaintModel model) {
 		super("Paint"); // set the title and do other JFrame init
@@ -41,6 +42,9 @@ public class View extends JFrame implements ActionListener {
 		
 		this.palletePanel = new PalletePanel(this.model, this);
 		c.add(this.palletePanel,BorderLayout.NORTH);
+		
+		this.paintTogetherPanel = new PaintTogetherPanel(this.model);
+		c.add(this.paintTogetherPanel,BorderLayout.SOUTH);
 		
 		this.pack();
 		// this.setSize(200,200);

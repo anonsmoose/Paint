@@ -4,13 +4,14 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * An object representing a circle for the purposed of being
  * drawn in a paint program.
  *
  */
-public class Circle implements Shape{
+public class Circle implements Shape,Serializable{
 	private Point centre;
 	private int radius;
 	private int brushSize;
@@ -82,4 +83,5 @@ public class Circle implements Shape{
 		compositeShapes.add(this);
 		return compositeShapes;
 	}
+	
 }

@@ -4,13 +4,14 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * An object representing a straight line between two points for the purposes
  * of being drawn in a paint program
  *
  */
-public class Line implements Shape {
+public class Line implements Shape,Serializable {
 	private int p1x,p1y,p2x,p2y;
 	private Color color;
 	private int thickness;

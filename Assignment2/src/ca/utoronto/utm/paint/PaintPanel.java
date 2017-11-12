@@ -47,6 +47,12 @@ class PaintPanel extends JPanel implements Observer{
 		for(Shape shape: this.model.getShapes()){
 				shape.drawShape(g);	
 		}
+		
+		if(this.model.isConnectedToServer()){
+			for(Shape shape : this.model.getTempClientShapes()){
+				shape.drawShape(g);
+			}
+		}
 		g2d.dispose();
 	}
 

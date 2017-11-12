@@ -2,13 +2,14 @@ package ca.utoronto.utm.paint.Shapes;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * An object representing a free form line for the purposes of being drawn in
  * a paint program
  *
  */
-public class Squiggle implements Shape {
+public class Squiggle implements Shape,Serializable {
 	private ArrayList<Point> compositePoints;
 	private Color color;
 	private boolean drawn;

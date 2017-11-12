@@ -4,13 +4,14 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * An object representing a square for the purposes of being 
  * drawn in a paint program.
  *
  */
-public class Square implements Shape {
+public class Square implements Shape,Serializable {
 	private int ydiff;
 	private int xdiff;
 	private int brushSize;
