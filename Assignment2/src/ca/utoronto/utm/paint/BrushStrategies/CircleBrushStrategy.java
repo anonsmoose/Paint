@@ -43,7 +43,10 @@ public class CircleBrushStrategy extends BrushStrategy{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
+		if(this.model.isConnectedToServer()){
+			this.model.removeTempShape(this.circle);
+			this.model.sendShapeToServer(this.circle);
+		}
 	}
 
 	@Override
@@ -70,7 +73,7 @@ public class CircleBrushStrategy extends BrushStrategy{
 			Double radius = new Double(Math.sqrt(Math.pow(this.circle.getCentre().getX() - e.getX(),2) + Math.pow(this.circle.getCentre().getY() - e.getY(),2)));
 			this.circle.setRadius(radius.intValue());
 		}
-		this.model.addShape(this.circle);
+		this.model.notifyBrushChanged();
 	}
 
 }

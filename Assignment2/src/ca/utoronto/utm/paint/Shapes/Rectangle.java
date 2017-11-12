@@ -4,12 +4,13 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * 
  *
  */
-public class Rectangle implements Shape{
+public class Rectangle implements Shape,Serializable{
 	private int height;
 	private int width;
 	private int brushSize;
