@@ -12,6 +12,7 @@ import ca.utoronto.utm.paint.BrushStrategies.PolylineBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.RectangleBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.SquareBrushStrategy;
 import ca.utoronto.utm.paint.BrushStrategies.SquiggleBrushStrategy;
+import ca.utoronto.utm.paint.BrushStrategies.TextToolBrushStrategy;
 
 public class BrushStrategyFactory implements ActionListener{
 	private PalletePanel panel;
@@ -47,6 +48,9 @@ public class BrushStrategyFactory implements ActionListener{
 			break;
 		case "Eraser":
 			this.brushStrategy = new EraserBrushStrategy(model);
+			break;
+		case "Text Tool":
+			this.brushStrategy = new TextToolBrushStrategy(model);
 			break;
 		}
 		JButton button = (JButton)e.getSource();
