@@ -276,3 +276,29 @@ PRIORITY : Low
 ESTIMATE : 1 Hour
 ISSUE    : Would be nice to have icons instead of "Filled", "Outline", ...
 --------------------------------------------------------------------------
+# Sprint 6 November 11-13, 2017
+# Sprint 6 Backlog UserStories go below
+--------------------------------------------------------------------------
+TYPE     : USER STORY 2.1 : oconn139
+NAME     : Paint Online
+OWNER    : Patrick O'Connor
+PRIORITY : Low
+ESTIMATE : 5 hours
+AS A     : user
+I WANT   : To be able to host/join an online paint server
+SO THAT  : I can share and collaborate with my friends on artwork 
+			remotely.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 2.2 : oconn139
+NAME     : Improve Paint Online
+OWNER    : Patrick O'Connor
+PRIORITY : Low
+ESTIMATE : 3 hours
+AS A     : user
+I WANT   : To be able to use all of the same tools that I can when I am painting
+			by myself in a paint server. It would also be nice to have an improved UI for host/joining
+			that matches the look and feel of the rest of the program.
+SO THAT  : Starting/Connecting/Joining/Leaving/Drawing in a paint server is seamless
+			and easy.
+--------------------------------------------------------------------------

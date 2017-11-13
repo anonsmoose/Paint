@@ -4,6 +4,9 @@
 # 1 Color chooser UI (which could be a USER STORY)
 # 2 Implementation of selected color into the drawing stream.
 
+We're choosing to instead wrap color/size/fill info into the shape commands themselves instead
+since when you are connected to a serve there are multiple clients each with different
+brush settings.
 --------------------------------------------------------------------------
 TYPE     : BUG 2.2 : UTORID
 NAME     : Architecture for handling shape modifiers can be improved 
