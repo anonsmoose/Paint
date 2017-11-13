@@ -49,3 +49,23 @@ Nov 5, 2017
 					to make the code more readable. Implement a new fill style which draws a shape outlined in the primary
 					color and filled with the secondary color. Add necessary documentation and submit the assignment.
 	Obstacles :
+
+Nov 9, 2017
+	Yesterday : Went to Arnold's office hours to ask about a platform dependent issue we were having regarding the loading of icons on
+					linux OS's
+	Today     : Reorganize some of the previously implemented design patterns to make them more explicit and simple.
+	Obstacles :
+	
+Nov 10, 2017
+	Yesterday : Reorganized some design pattern stuff, thought about cool new feautures to add to the assignment
+	Today     : Learn how to use sockets from the Java.net API and streams for IO to see if it may be possible to add
+					an online component to our paint program.
+	Obstacles :
+	
+Nov 11, 2017
+	Yesterday : Learned how to use sockets and streams, implemented most of the server-side stuff necessary for paint online
+					to work.
+	Today     : Implement client-side stuff for interacting with the server stuff from yesterday. Have this feature mostly complete by the
+					end of the day.
+	Obstacles :
+	
