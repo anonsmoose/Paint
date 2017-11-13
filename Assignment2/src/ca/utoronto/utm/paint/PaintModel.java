@@ -96,6 +96,7 @@ public class PaintModel extends Observable {
 	
 	public void addShapeFromServer(Shape shape){
 		this.shapes.add(shape);
+		this.tempClientsideShapePreviews.remove(shape);
 		this.notifyBrushChanged();
 		System.out.println("adding shape");
 	}

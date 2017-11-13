@@ -42,6 +42,9 @@ public class PolylineBrushStrategy extends BrushStrategy {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		this.origin = this.destination;
+		if(this.model.isConnectedToServer()){
+			this.model.sendShapeToServer(this.line);
+		}
 
 	}
 

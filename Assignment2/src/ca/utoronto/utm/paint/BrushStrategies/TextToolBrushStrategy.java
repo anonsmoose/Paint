@@ -30,6 +30,9 @@ public class TextToolBrushStrategy extends BrushStrategy{
 		Color color1 = this.primaryColor;
 		this.text = new Text(origin,fontSize, text, fontFamily, color1);
 		this.model.addShape(this.text);
+		if(this.model.isConnectedToServer()){
+			this.model.sendShapeToServer(this.text);
+		}
 		
 	}
 
@@ -53,7 +56,6 @@ public class TextToolBrushStrategy extends BrushStrategy{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

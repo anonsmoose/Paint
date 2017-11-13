@@ -44,7 +44,6 @@ public class CircleBrushStrategy extends BrushStrategy{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if(this.model.isConnectedToServer()){
-			this.model.removeTempShape(this.circle);
 			this.model.sendShapeToServer(this.circle);
 		}
 	}

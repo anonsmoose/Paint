@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.ArrayList;
 /**
- * Interface for implementing the composite design pattern for the various shapes
+ * Interface for implementing the command design pattern for the various shapes
  * used for drawing in a paint program.
  *
  */

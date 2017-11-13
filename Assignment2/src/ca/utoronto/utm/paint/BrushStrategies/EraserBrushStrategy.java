@@ -20,6 +20,7 @@ public class EraserBrushStrategy extends SquiggleBrushStrategy{
 		if(SwingUtilities.isRightMouseButton(e))
 			color = this.secondaryColor;
 		squiggle = new Squiggle(color, this.brushSize);
+		this.model.addShape(squiggle);
 		
 	}
 

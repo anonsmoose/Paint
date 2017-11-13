@@ -34,12 +34,15 @@ public class SquiggleBrushStrategy extends BrushStrategy {
 		if(SwingUtilities.isRightMouseButton(e))
 			color = this.secondaryColor;
 		squiggle = new Squiggle(color, this.brushSize);
+		this.model.addShape(this.squiggle);
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		this.model.addShape(squiggle);
+		if(this.model.isConnectedToServer()){
+			this.model.sendShapeToServer(squiggle);
+		}
 		
 	}
 
@@ -66,7 +69,7 @@ public class SquiggleBrushStrategy extends BrushStrategy {
 		if(this.squiggle != null){
 			this.squiggle.addPoint(new Point(e.getX(), e.getY()));
 		}	
-		this.model.addShape(this.squiggle);
+		this.model.notifyBrushChanged();
 	}
 
 }

@@ -43,7 +43,9 @@ public class SquareBrushStrategy extends BrushStrategy {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(this.model.isConnectedToServer()){
+			this.model.sendShapeToServer(this.square);
+		}
 
 	}
 

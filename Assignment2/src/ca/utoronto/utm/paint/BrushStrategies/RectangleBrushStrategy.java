@@ -45,7 +45,9 @@ public class RectangleBrushStrategy extends BrushStrategy{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
+		if(this.model.isConnectedToServer()){
+			this.model.sendShapeToServer(this.rectangle);
+		}
 	}
 
 	@Override
@@ -74,7 +76,7 @@ public class RectangleBrushStrategy extends BrushStrategy{
 			this.rectangle.setheight(height);
 			this.rectangle.setWidth(width);
 		}
-		this.model.addShape(this.rectangle);
+		this.model.notifyBrushChanged();
 		
 	}
 
