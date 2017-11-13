@@ -188,30 +188,7 @@ I WANT   : To be able to select a second color in the same way as User Story 5,
 			mouse button instead of the left.
 SO THAT  : Use multiple colors at once.
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY 2.1 : oconn139
-NAME     : Paint Online
-OWNER    : Patrick O'Connor
-PRIORITY : Low
-ESTIMATE : 5 hours
-AS A     : user
-I WANT   : To be able to host/join an online paint server
-SO THAT  : I can share and collaborate with my friends on artwork 
-			remotely.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY 2.2 : oconn139
-NAME     : Improve Paint Online
-OWNER    : Patrick O'Connor
-PRIORITY : Low
-ESTIMATE : 3 hours
-AS A     : user
-I WANT   : To be able to use all of the same tools that I can when I am painting
-			by myself in a paint server. It would also be nice to have an improved UI for host/joining
-			that matches the look and feel of the rest of the program.
-SO THAT  : Starting/Connecting/Joining/Leaving/Drawing in a paint server is seamless
-			and easy.
---------------------------------------------------------------------------
+
 --------------------------------------------------------------------------
 TYPE     : BUG 1
 NAME     : Icons instead of text for drawing mode selection
@@ -401,8 +378,32 @@ simply switching the PaintPanel's listeners as appropriate.
 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY 12 : tamrazpe
-NAME     : Undo/Redo
+TYPE     : USER STORY 2.1 : oconn139
+NAME     : Paint Online
+OWNER    : Patrick O'Connor
+PRIORITY : Low
+ESTIMATE : 4 hours
+AS A     : user
+I WANT   : To be able to host/join an online paint server
+SO THAT  : I can share and collaborate with my friends on artwork 
+			remotely.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 2.2 : oconn139
+NAME     : Improve Paint Online
+OWNER    : Patrick O'Connor
+PRIORITY : Low
+ESTIMATE : 3 hours
+AS A     : user
+I WANT   : To be able to use all of the same tools that I can when I am painting
+			by myself in a paint server. It would also be nice to have an improved UI for host/joining
+			that matches the look and feel of the rest of the program.
+SO THAT  : Starting/Connecting/Joining/Leaving/Drawing in a paint server is seamless
+			and easy.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 2.3 : tamrazpe
+NAME     : Undo/Redo (Client-side only for now)
 OWNER    : Peter Tamraz
 PRIORITY : Medium
 ESTIMATE : 2 hours
