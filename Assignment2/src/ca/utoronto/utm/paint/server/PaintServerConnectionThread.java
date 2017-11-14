@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 import ca.utoronto.utm.paint.Shapes.Circle;
 import ca.utoronto.utm.paint.Shapes.Point;
@@ -37,10 +38,15 @@ public class PaintServerConnectionThread extends Thread{
 				}catch(EOFException e){} 
 				 catch (ClassNotFoundException e) {
 					e.printStackTrace();
+				}catch(SocketException e){
+					this.server.removeClient(out);
 				}
 			}
 			this.server.removeClient(out);
-		} catch (IOException e) {
+		}catch(SocketException e){
+			//Socket closed do nothing
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block

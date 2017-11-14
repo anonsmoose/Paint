@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
@@ -16,21 +17,27 @@ public class PaintServer extends Thread{
 	private ArrayList<ObjectOutputStream> clients = new ArrayList<ObjectOutputStream>();
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 	private int portNumber;
+	private ServerSocket serverSocket;
+	private boolean listeningForClients = true;
+	private ArrayList<Socket> sockets;
 	public PaintServer(ArrayList shapes, int portNumber){
 		this.shapes = shapes;	
 		this.portNumber = portNumber;
 	}
 	
 	public void run(){
-		boolean listeningForClients = true;
 		try (ServerSocket serverSocket = new ServerSocket(portNumber)){
-			while(listeningForClients){
-				new PaintServerConnectionThread(this, serverSocket.accept()).start();
-			}
+			this.serverSocket = serverSocket;
+			this.sockets = new ArrayList<Socket>();
 			
+			while(listeningForClients){
+				Socket socket = serverSocket.accept();
+				new PaintServerConnectionThread(this, socket).start();
+				this.sockets.add(socket);
+			}
 		}catch(IOException e){
-			e.printStackTrace();
-		} 
+			this.listeningForClients = false;
+		}
 	}
 	
 	public void addShape(Shape shape){
@@ -42,7 +49,10 @@ public class PaintServer extends Thread{
 		for(ObjectOutputStream client : clients){
 			try {
 				client.writeObject(shape);
-			} catch (IOException e) {
+			}catch(SocketException e){
+
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
@@ -51,6 +61,17 @@ public class PaintServer extends Thread{
 	public void sendCurrentShapes(ObjectOutputStream out){
 		try {
 			out.writeObject(this.shapes);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void close(){
+		try {
+			this.serverSocket.close();
+			for(Socket socket : sockets){
+				socket.close();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

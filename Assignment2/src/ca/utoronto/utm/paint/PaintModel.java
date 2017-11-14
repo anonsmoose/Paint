@@ -18,6 +18,7 @@ public class PaintModel extends Observable {
 	
 	private boolean connectedToServer = false;
 	private PaintClientConnectionThread connectionThread;
+	private PaintServer server;
 	
 
 	public void addShape(Shape s){
@@ -68,6 +69,7 @@ public class PaintModel extends Observable {
 	
 	public void startServer(int port){
 		PaintServer server = new PaintServer(this.shapes, port);
+		this.server = server;
 		server.start();
 	}
 	
@@ -103,6 +105,19 @@ public class PaintModel extends Observable {
 	
 	public void setServerStatus(boolean status){
 		this.connectedToServer = status;
+		this.notifyBrushChanged();
+	}
+	
+	public void disconnectFromServer(){
+		if(this.connectionThread != null){
+			this.connectionThread.close();
+			this.connectionThread = null;
+		}
+		
+		if(this.server != null){
+			this.server.close();
+			this.server = null;
+		}
 	}
 	
 	public ArrayList<Shape> getShapes(){

@@ -302,7 +302,7 @@ public class PalletePanel extends JPanel implements ChangeListener, ActionListen
 	 * Makes cosmetic changes to a JButton. 
 	 * @param button The button being stylized.
 	 */
-	private static void styleButton(JButton button) {
+	static void styleButton(JButton button) {
 		button.setFocusPainted(false);
 		button.setFont(new Font("Arial", Font.BOLD, 12));
 		button.setVerticalTextPosition(3);

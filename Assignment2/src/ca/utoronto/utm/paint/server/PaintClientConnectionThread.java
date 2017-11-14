@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ import ca.utoronto.utm.paint.Shapes.Shape;
 public class PaintClientConnectionThread extends Thread{
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
+	private Socket socket;
 	private PaintModel model;
 	private String address;
 	private int port;
@@ -31,6 +33,7 @@ public class PaintClientConnectionThread extends Thread{
 			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 			){
+				this.socket = socket;
 				this.out = out;
 				System.out.println("connected");
 				this.model.setServerStatus(true);
@@ -49,13 +52,18 @@ public class PaintClientConnectionThread extends Thread{
 					catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					catch (SocketException e) {
+						//The socket is closed do nothing and let the thread end
+						socket.close();
+						this.model.setServerStatus(false);
+					}
 				}
+				this.model.setServerStatus(false);
 			} catch (UnknownHostException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-		this.model.setServerStatus(false);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -76,6 +84,19 @@ public class PaintClientConnectionThread extends Thread{
 		try {
 			out.writeObject(o);
 			out.flush();
+		}catch(SocketException e){
+			//The server closed the socket
+			this.model.setServerStatus(false);
+			this.model.addShape((Shape)o); //re-add the shape
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void close(){
+		try {
+			this.socket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
