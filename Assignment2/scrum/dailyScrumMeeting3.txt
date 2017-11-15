@@ -42,3 +42,24 @@ Nov 5, 2017
 	Yesterday : Fixed path issues.
 	Today     : Redo icons that got stretched out.  
 	Obstacles :
+
+Nov 11, 2017
+	Yesterday : 
+	Today     : Implement undo/redo. Add an eraser tool.
+	Obstacles :
+
+Nov 12, 2017
+	Yesterday : Finished implementing undo/redo/eraser tool.
+	Today     :  Add a text tool.
+	Obstacles :
+
+Nov 13, 2017
+	Yesterday : Finished adding the text tool.
+	Today     :  
+	Obstacles :
+	
+Nov 14, 2017
+	Yesterday : 
+	Today     :  Fix error which allowed the user to draw in the secondary colour with the eraser. Add try-catch to dialogs for text tool. Cleanup.
+	
+	Obstacles :

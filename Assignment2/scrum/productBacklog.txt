@@ -412,5 +412,27 @@ I WANT   : use the menu to undo or redo shapes that I have created.
 SO THAT  : Get rid of mistakes or get back creations that were originally
 correct.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 2.4 : tamrazpe
+NAME     : Eraser tool
+OWNER    : Peter Tamraz
+PRIORITY : Medium
+ESTIMATE : 2 hours
+AS A     : user
+I WANT   : To have a tool which quickly allows me to paint the background color
+SO THAT  : I can erase parts of shapes i've already created.
+correct.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY 2.5 : tamrazpe
+NAME     : Text Tool
+OWNER    : Peter Tamraz
+PRIORITY : Medium
+ESTIMATE : 2 hours
+AS A     : user
+I WANT   : Be all to add text to the canvas.
+SO THAT  : Add words to my art.
+correct.
+--------------------------------------------------------------------------
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 

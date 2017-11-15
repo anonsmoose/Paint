@@ -20,16 +20,29 @@ public class TextToolBrushStrategy extends BrushStrategy{
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		String text = null;
+		String fontFamily = null;
+		int fontSize = 0;
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		String[] options = ge.getAvailableFontFamilyNames();
 		Point origin = new Point(e.getX(), e.getY());
-		String text = JOptionPane.showInputDialog(null, "Enter your text");
-		int fontSize = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter text size"));
-		String fontFamily = (String)JOptionPane.showInputDialog(null,"Choose your font family",
-                "Font Chooser Dialog", JOptionPane.PLAIN_MESSAGE, null, options, "ham");
+		try
+		{
+			text = JOptionPane.showInputDialog(null, "Enter your text");
+			fontSize = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter text size"));
+			fontFamily = (String)JOptionPane.showInputDialog(null,"Choose your font family",
+	                "Font Chooser Dialog", JOptionPane.PLAIN_MESSAGE, null, options, null);
+		} catch(NumberFormatException nfe)
+		{
+			nfe.printStackTrace();
+		}
+		
 		Color color1 = this.primaryColor;
-		this.text = new Text(origin,fontSize, text, fontFamily, color1);
-		this.model.addShape(this.text);
+		if((text != null) && (fontFamily != null) && (fontSize > 0)) {
+			this.text = new Text(origin,fontSize, text, fontFamily, color1);
+			this.model.addShape(this.text);
+		}
+		
 		if(this.model.isConnectedToServer()){
 			this.model.sendShapeToServer(this.text);
 		}
