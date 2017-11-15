@@ -39,12 +39,12 @@ DESIGN PATTERNS USED
 	the code. I see at least two that would greatly improve code. 
 		
 	Strategy: Used to modularize and simplify brush selection.
-	Command: 
+	Command: Used for executing the drawing of shapes.
 	Singleton:
-	Composite: Used to simplify the storage and rendering of shapes.
-	Factory: Sort of used this to build brush strategies in palette panel.
+	Composite: 
+	Factory: Used to build new brush strategies when changes are made in the palette panel
 	Builder:
-	Observer/Observable:
+	Observer/Observable: Used so that the view knows when to update
 	... (any others you find useful) ...
 
 OTHER ARCHITECTURE DISCUSSIONS

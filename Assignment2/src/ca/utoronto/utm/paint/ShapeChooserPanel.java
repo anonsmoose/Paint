@@ -13,6 +13,11 @@ import java.awt.event.ActionListener;
 // https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html
 // https://docs.oracle.com/javase/tutorial/2d/
 
+/**
+ * 
+ * @deprecated
+ *
+ */
 class ShapeChooserPanel extends JPanel implements ActionListener {
 	private View view; // So we can talk to our parent or other components of the view
 	private JButton previousButtonClick;

@@ -31,6 +31,11 @@ public class PaintTogetherPanel extends JPanel implements Observer {
 	private final Font font = new Font("Arial", Font.BOLD, 16);
 	private final Color textColor = new Color(255, 3, 118);
 	
+	/**
+	 * A part of the view of a paint program, contains controls for connecting 
+	 * hosting and disconnecting from servers
+	 * @param model
+	 */
 	public PaintTogetherPanel(PaintModel model){
 		this.model = model;
 		this.model.addObserver(this);
