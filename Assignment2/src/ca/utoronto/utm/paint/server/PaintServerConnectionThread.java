@@ -11,11 +11,20 @@ import java.net.SocketException;
 import ca.utoronto.utm.paint.Shapes.Circle;
 import ca.utoronto.utm.paint.Shapes.Point;
 import ca.utoronto.utm.paint.Shapes.Shape;
-
+/**
+ * A thread for handling the serverside communication between the server and a
+ * specific client
+ *
+ */
 public class PaintServerConnectionThread extends Thread{
 	private Socket clientSocket = null;
 	private PaintServer server;
 	
+	/**
+	 * Constructs the connection thread
+	 * @param server The PaintServer this thread belongs to
+	 * @param socket The Client's socket
+	 */
 	public PaintServerConnectionThread(PaintServer server, Socket socket){
 		super("PaintServerConnectionThread");
 		this.clientSocket = socket;

@@ -69,3 +69,12 @@ Nov 11, 2017
 					end of the day.
 	Obstacles :
 	
+Nov 12, 2017
+	Yesterday : Finished implementing Paint Online stuff
+	Today     : Clean it up and improve the GUI
+	Obstacles :
+	
+Nov 14, 2017
+	Yesterday : Finished Paint Online
+	Today     : Final pass, add some documentation
+	Obstacles :

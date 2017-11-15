@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import ca.utoronto.utm.paint.PaintModel;
 import ca.utoronto.utm.paint.Shapes.Shape;
 
+/**
+ * A thread for handling the client side communication with the server
+ * for Paint Online
+ */
 public class PaintClientConnectionThread extends Thread{
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
@@ -21,6 +25,12 @@ public class PaintClientConnectionThread extends Thread{
 	private String address;
 	private int port;
 	
+	/**
+	 * Constructs the client side connection thread
+	 * @param model The model which is receiving shapes from the server
+	 * @param address The string representation of the address being connected to
+	 * @param port The port through which the thread attempts to connect to the server
+	 */
 	public PaintClientConnectionThread(PaintModel model,String address, int port){
 		super("PaintClientConnectionThread");
 		this.address = address;
@@ -35,7 +45,6 @@ public class PaintClientConnectionThread extends Thread{
 			){
 				this.socket = socket;
 				this.out = out;
-				System.out.println("connected");
 				this.model.setServerStatus(true);
 				while(!socket.isClosed()){
 					try{
@@ -53,7 +62,7 @@ public class PaintClientConnectionThread extends Thread{
 						e.printStackTrace();
 					}
 					catch (SocketException e) {
-						//The socket is closed do nothing and let the thread end
+						//The socket is closed
 						socket.close();
 						this.model.setServerStatus(false);
 					}
@@ -66,20 +75,26 @@ public class PaintClientConnectionThread extends Thread{
 			}
 	}
 	
+	/**
+	 * Decides how an object received by the server is dealt with based on its type.
+	 * @param o The object being handled
+	 */
 	@SuppressWarnings("unchecked")
 	public void processInput(Object o){
 		if(o instanceof ArrayList){
 			this.model.setShapes((ArrayList<Shape>) o);
 			ArrayList<Shape> shape = (ArrayList<Shape>) o;
-			System.out.println("A list" + shape.size());
 		}
 		
 		if(o instanceof Shape){
 			this.model.addShapeFromServer((Shape) o);
-			System.out.println("shape");
 		}
 	}
 	
+	/**
+	 * Sends an object (typically a shape) to the server
+	 * @param o The object being sent
+	 */
 	public void sendObjectToServer(Object o){
 		try {
 			out.writeObject(o);
@@ -94,6 +109,9 @@ public class PaintClientConnectionThread extends Thread{
 		}
 	}
 	
+	/**
+	 * Closes the client socket and allows the thread to terminate
+	 */
 	public void close(){
 		try {
 			this.socket.close();
