@@ -9,7 +9,8 @@ public class Paint {
 				new Paint();
 			}  
 		});
-	}
+	}                         
+	//TEST GIT
 
 	PaintModel model; // Model
 	View view; // View+Controller
