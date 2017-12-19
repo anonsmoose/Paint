@@ -11,6 +11,7 @@ public class Paint {
 		});
 	}                         
 	//TEST GIT
+	//complete
 
 	PaintModel model; // Model
 	View view; // View+Controller
